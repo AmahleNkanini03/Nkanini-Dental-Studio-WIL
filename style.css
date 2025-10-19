@@ -983,3 +983,375 @@ body {
     font-size: 2.2rem;
   }
 }
+
+
+/*About Us*/
+:root{
+  --accent: #0080ff;
+  --muted-bg: #f7f8fa;
+  --card-shadow: 0 5px 14px rgba(17, 17, 17, 0.07);
+  --text: #111;
+  --muted-text: #4b5563;
+  --max-width: 1100px;
+  --gutter: 40px;
+  --radius: 12px;
+}
+
+/* Hero */
+.about{
+  height:300px;
+  background:url('images/background.png') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+.about::after{
+  content:"";
+  position:absolute; inset:0; background:rgba(0,0,0,0.45);
+}
+.about .overlay{
+  position:relative; z-index:1; color:#fff; text-align:center; padding:0 20px; max-width:900px;
+}
+.about h2{ color: #00aaff; font-size:32px; margin-bottom:12px; }
+.about p{ font-size:16px; line-height:1.7; }
+
+/* ===== OUR STORY SECTION ===== */
+.story-section {
+  background: #fff;
+  padding: 50px 70px;
+  max-width: 1300px;
+  margin: 60px auto 40px auto;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+}
+
+.story-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+/* Left text area */
+.story-text {
+  flex: 1 1 60%;
+}
+
+.story-text h2 {
+  font-size: 28px;
+  color: #000;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.story-text p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+/* Right image area */
+.story-images {
+  position: relative;
+  flex: 1 1 40%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Top image */
+.story-images .img-top {
+  width: 280px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* Bottom overlapping image */
+.story-images .img-bottom {
+  width: 180px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: -40px;
+  right: -20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+  .story-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .story-images {
+    margin-top: 40px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .story-images .img-top {
+    width: 90%;
+  }
+
+  .story-images .img-bottom {
+    position: relative;
+    width: 90%;
+    bottom: 0;
+    right: 0;
+    margin-top: -40px;
+  }
+
+  .story-section {
+    padding: 40px 20px;
+  }
+}
+
+/* ===== MISSION & VISION BOX ===== */
+.mission-vision {
+  background: #2b8bff;
+  color: #fff;
+  padding: 50px 70px;
+  border-radius: 10px;
+  max-width: 1250px;
+  margin: 60px auto 40px auto;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.mission-vision h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.mission-vision p {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.mission-vision ul {
+  margin: 0 0 15px 20px;
+  padding: 0;
+}
+
+.mission-vision ul li {
+  margin-bottom: 6px;
+  list-style-type: disc;
+}
+
+.mission-vision hr {
+  border: none;
+  height: 1px;
+  background: rgba(255,255,255,0.6);
+  margin: 25px 0;
+}
+
+/* ===== WHY CHOOSE US ===== */
+.choose-us {
+  text-align: center;
+  padding: 20px 20px 60px;
+}
+
+.choose-us h2 {
+  color: #0078ff;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+/* Grid layout */
+.choose-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Each card */
+.choose-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 25px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  transition: 0.3s ease;
+}
+
+.choose-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* Icon styling (thin border box) */
+.icon-box {
+  border: 1px solid #000000;
+  color: #000000;
+  border-radius: 8px;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  font-size: 20px;
+}
+
+.icon-box i {
+  color: #000000;  
+  font-size: 22px; 
+}
+
+/* Texts inside card */
+.choose-text h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 4px;
+  text-align: left;
+}
+
+.choose-text p {
+  font-size: 13px;
+  color: #444;
+  line-height: 1.4;
+  text-align: left;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .mission-vision {
+    padding: 40px 20px;
+  }
+
+  .choose-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+   /* ====== STATS SECTION (blue rounded box) ====== */
+    .stats-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-top: 60px;
+      margin-bottom: 60px;
+    }
+
+    .stats-container {
+      background-color: #1e90ff;
+      color: #fff;
+      border-radius: 10px;
+      padding: 40px 60px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 100px;
+      width: 80%;
+      max-width: 1000px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-item h2 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .stat-item p {
+      font-size: 16px;
+      font-weight: 400;
+      margin: 0;
+    }
+
+      /* ===== Testimonial Section ===== */
+    .testimonial-section {
+  background: #fff;
+  text-align: center;
+  padding: 60px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.testimonial-title {
+  color: var(--accent);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+/* Layout of photo + quote */
+.testimonial-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+/* Photo styling */
+.testimonial-photo {
+  width: 260px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Quote box styling */
+.quote-box {
+  position: relative;
+  left: -20px; /* overlap adjustment */
+  border: 1.5px solid var(--accent);
+  border-radius: 8px;
+  padding: 25px 30px;
+  max-width: 580px;
+  background: #fff;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 180px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  z-index: 1; /* ensures image appears above */
+}
+
+/* Quote text and author */
+.quote-text {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 12px;
+}
+
+.quote-author {
+  font-weight: 600;
+  color: #000;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .testimonial-row {
+    flex-direction: column;
+  }
+  .quote-box {
+    left: 0;
+    margin-top: 20px;
+    max-width: 90%;
+  }
+}
+
