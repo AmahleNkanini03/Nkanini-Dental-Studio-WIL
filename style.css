@@ -736,6 +736,12 @@ body {
   max-width: 45%;
   text-align: left;
 }
+.icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
 
 .contact-left h2 {
   font-size: 1.8rem;
@@ -842,7 +848,7 @@ body {
 }
 
 .map-container {
-  flex: 2;
+  flex: 1;
   margin-right: 20px;
 }
 
