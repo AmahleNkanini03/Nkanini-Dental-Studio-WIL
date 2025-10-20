@@ -1355,3 +1355,205 @@ body {
   }
 }
 
+
+/*Our Team*/
+/* Hero */
+.team{
+  height:300px;
+  background:url('images/background.png') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+.team::after{
+  content:"";
+  position:absolute; inset:0; background:rgba(0,0,0,0.45);
+}
+.team .lay{
+  position:relative; z-index:1; color:#fff; text-align:center; padding:0 20px; max-width:900px;
+}
+.team h2{ color: #00aaff; font-size:32px; margin-bottom:12px; }
+.team p{ font-size:16px; line-height:1.7; }
+
+/* === DOCTOR SECTION STYLING === */
+.doctor-section {
+  background: #fff;
+  padding: 60px 80px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.doctor-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.doctor-text {
+  flex: 1 1 55%;
+}
+
+.doctor-text h2 {
+  font-size: 40px;
+  font-weight: 700;
+  color: #1a73e8;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.doctor-text h2 span {
+  color: #0071ce;
+}
+
+.doctor-text p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+/* Right image section */
+.doctor-image {
+  flex: 1 1 45%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Background image swirl */
+.doctor-image .image-bg {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 700px;
+  background: url('images/dental-hygiene-concept-with-blue-background.png') no-repeat center center;
+  background-size: contain;
+  z-index: 1;
+  opacity: 0.9;
+}
+
+/* Doctor photo */
+.doctor-image img {
+  width: 500px;
+  top: -60px;
+  border-radius: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .doctor-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .doctor-image {
+    order: -1;
+    margin-bottom: 30px;
+  }
+
+  .doctor-text h2 {
+    font-size: 32px;
+  }
+
+  .doctor-image img {
+    width: 260px;
+  }
+
+  .doctor-image .image-bg {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+
+.team-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* centers all cards horizontally */
+  gap: 30px;             /* spacing between cards */
+  margin: 50px auto;
+  max-width: 1000px;      /* prevents it from stretching too wide */
+}
+
+.team-member {
+  display: flex;
+  align-items: flex-start;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;           /* each card same width */
+}
+
+.team-member img {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+.team-info h3 {
+  color: #0094ff;
+  margin-bottom: 5px;
+}
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .team-member {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .team-member img {
+      width: 200px;
+      height: 200px;
+    }
+
+    .member-info {
+      margin-top: 15px;
+    }
+  }
+
+  /* ===== BOOK APPOINTMENT BANNER ===== */
+.appointment-banner {
+  background-color: #1da1ff;       /* bright blue */
+  color: #fff;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.appointment-text {
+  font-size: 16px;
+  font-weight: 400;
+  max-width: 700px;
+  margin: 0 auto 25px auto;
+  line-height: 1.6;
+  color: #fff;
+  font-style: italic;
+}
+
+.appointment-btn {
+  display: inline-block;
+  background: #fff;
+  color: #1da1ff;
+  font-weight: 500;
+  padding: 10px 25px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid #fff;
+}
+
+.appointment-btn:hover {
+  background: transparent;
+  color: #fff;
+}
