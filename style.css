@@ -6,6 +6,11 @@
   font-family: "Poppins", sans-serif;
 }
 
+html, body {
+  overflow-x: hidden;  /* Prevents horizontal scrolling */
+  width: 100%;
+}
+
 /* Top bar */
 .top-bar {
   background-color: #0094ff;
@@ -39,7 +44,6 @@
 .book-appointment:hover {
   color: #007bff;
 }
-
 
 
 .logo {
@@ -88,7 +92,6 @@
 .book-btn {
   font-weight: 600;
 }
-
 
 /* Hero section */
 .hero {
@@ -141,7 +144,6 @@
 .hero .btn:hover {
   background-color: #0056b3;
 }
-
 
 
 .hero::before {
@@ -284,35 +286,38 @@ body {
   background-color: #fff;
   color: #333;
 }
-
-/* Section */
-.section-services {
+/* === Services Section === */
+.services {
   width: 100%;
   max-width: 1300px;
   margin: 80px auto;
+  overflow: visible !important; /* ensure content shows fully */
+  height: auto !important;      /* allow section to grow with content */
 }
 
-.services-header {
+/* Header */
+.services__header {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* moves items toward the top */
+  align-items: center;
   margin-bottom: 40px;
   padding: 0 40px;
   position: relative;
 }
 
-.services-header .title {
+/* Title */
+.services__title {
   position: absolute;
   left: 40%;
   font-size: 30px;
   font-weight: 700;
   color: #0b0c20;
   text-align: center;
-  transform: translateY(-20px); /* pushes heading upward */
+  transform: translateY(-20px);
 }
 
-/* View More Button (Far Right) */
-.view-more-btn {
+/* View More Button */
+.services__view-more-btn {
   background-color: #0094ff;
   color: #fff;
   padding: 14px 36px;
@@ -320,76 +325,73 @@ body {
   text-decoration: none;
   font-weight: 600;
   transition: background 0.3s ease;
-  text-decoration: none;
 }
 
-.view-more-btn:hover {
+.services__view-more-btn:hover {
   background-color: #007bdb;
 }
 
-/* Services Layout */
-.services-content {
+/* Content Layout */
+.services__content {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 50px;
 }
 
-/* Left & Right Columns */
-.services-left,
-.services-right {
+/* Columns */
+.services__left,
+.services__right {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 15px;
-  font-weight: 600;
-  font-size: 15px;
+  flex-direction: column;
+  gap: 25px;
 }
 
-/* Rectangle Service Cards (Wider) */
-.service-card {
+/* Service Cards */
+.services__card {
   width: 340px;
   height: 130px;
   background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 25px 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.05);
 }
 
-.service-card img {
-  width: 100%;
-  height: 200px; /* adjust as needed */
-  display: block; /* removes inline whitespace */
-  object-fit: cover; /* ensures image fills space */
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-
-.service-card:hover {
+.services__card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 }
 
-/* Icons */
-.service-card i {
+/* Card Icons */
+.services__card i {
   font-size: 30px;
   color: #0094ff;
   margin-bottom: 8px;
 }
 
-.service-card h3 {
+/* Card Title */
+.services__card-title {
   font-size: 17px;
   font-weight: 700;
   margin-bottom: 6px;
   color: #0b0c20;
 }
 
-.service-card p {
+/* Card Text */
+.services__card-text {
   font-size: 13px;
   color: #666;
   line-height: 1.4;
 }
 
-/* Center Image (Zoomed, No Hover) */
-.services-image img {
+/* Center Image */
+.services__image img {
   width: 420px;
   max-width: 100%;
   transform: scale(1.1);
@@ -401,7 +403,6 @@ body {
   text-align: center;
   margin: 80px 80px 60px 80px; /* top right bottom left */
 }
-
 
 .testimonials-section h2 {
   color: #0b0c20;
@@ -446,12 +447,12 @@ body {
 
 /* Responsive Design */
 @media (max-width: 900px) {
-  .section-services, .testimonials-section {
+  .services-section, .testimonials-section {
     margin: 30px 20px;
     padding: 30px 20px;
   }
 
-  .card-service {
+  .services__card {
     width: 90%;
   }
 
@@ -613,6 +614,7 @@ body {
   }
 }
 
+
 /* ===========================
    Contact Section
    =========================== */
@@ -718,7 +720,6 @@ body {
   transform: translateY(-2px);    /* lift slightly on hover */
 }
 
-
 .contact-right button {
   background: #fff;
   color: #007bff;
@@ -803,10 +804,10 @@ section {
   padding: 0 20px;         /* prevent text from touching edges */
 }
 
-
 /* Hero */
 .about{
-  height:300px;
+  width: 100%;
+  height: 400px;
   background:url('images/background.png') center/cover no-repeat;
   display:flex;
   align-items:center;
@@ -1204,7 +1205,6 @@ section {
   }
 }
 
-
 /*Our Team*/
 /* Hero */
 .team{
@@ -1330,7 +1330,6 @@ section {
   }
 }
 
-
 .team-section {
   display: flex;
   flex-direction: column;
@@ -1413,84 +1412,4 @@ section {
 .appointment-btn:hover {
   background: transparent;
   color: #fff;
-}
-/* Appointment Form Section */
-.appointment-section {
-  padding: 80px 40px;
-  background: #f7faff;
-  text-align: center;
-}
-
-.appointment-section h2 {
-  font-size: 2.5rem;
-  color: #007bff;
-  margin-bottom: 20px;
-}
-
-.appointment-section p {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 40px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.appointment-form {
-  max-width: 600px;
-  margin: 0 auto;
-  display: grid;
-  gap: 20px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-
-.form-group label {
-  font-size: 1rem;
-  color: #1e3a8a;
-  margin-bottom: 8px;
-  font-weight: 600;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-  background: #fff;
-  transition: border-color 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: #3b82f6;
-  outline: none;
-}
-
-.form-group textarea {
-  height: 120px;
-  resize: vertical;
-}
-
-.appointment-form .btn {
-  padding: 14px 30px;
-  background: #3b82f6;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.appointment-form .btn:hover {
-  background: #2563eb;
-  transform: translateY(-2px);
 }
