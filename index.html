@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nkanini Dental Studio</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <!-- Top Info Bar -->
@@ -29,9 +30,9 @@
         <li><a href="About Us.html">About Us</a></li>
         <li><a href="Services.html">Services</a></li>
         <li><a href="Contact.html">Contact Us</a></li>
-        <span class="book-appointment">Book Appointment</span>
-
-      </ul>
+        <li><a href="Appointment.html" class="book-appointment">Book Appointment</a></li>
+        
+</ul>
     </nav>
   </header>
 
@@ -40,7 +41,7 @@
     <div class="hero-content">
       <h1>Welcome to Nkanini Dental Studio</h1>
       <p>Brighten your smile with expert dental care because your<br>teeth deserve the best</p>
-      <a href="#" class="cta-btn">Book Appointment</a>
+      <a href="book-appointment.html" class="cta-btn">Book Appointment</a>
     </div>
   </section>
 
@@ -57,39 +58,68 @@
       professionalism with compassion to deliver lasting results. Your oral health
       and confidence are at the heart of everything we do.
     </p>
-    <button class="learn-btn">Learn more</button>
-  </div>
-
-  <div class="about-image">
-    <img src="images/dentist.png" alt="Dentist at work">
+    <a href="About Us.html" class="learn-btn">Learn more</a>
   </div>
 </section>
 
-<!-- Our Services Section -->
-<section class="services-section">
-  <h2>Our Services</h2>
-  <div class="services-container">
-    <div class="service-card">
-      <img src="images/tooth-extraction.png" alt="Tooth Extraction">
-      <div class="service-info">
-        <span class="service-name">Tooth Extraction</span>
-        <span class="service-price">R400.00</span>
+
+<body>
+
+  <section class="services-section">
+    <div class="services-header">
+      <div>
+        <h2 class="title">What We Provide</h2>
       </div>
+      <a href="Services.html" class="view-more-btn">View More</a>
     </div>
 
-    <div class="service-card">
-      <img src="images/cementation.png" alt="Cementation">
-      <div class="service-info">
-        <span class="service-name">Cementation</span>
-        <span class="service-price">R400.00</span>
+    <div class="services-content">
+      <div class="services-left">
+        <!-- Oral Surgery -->
+        <div class="service-card">
+          <i class="fa-solid fa-syringe"></i>
+          <h3>Oral Surgery Service</h3>
+          <p>We perform safe and comfortable oral surgeries, including tooth extractions and wisdom teeth removal.</p>
+        </div>
+
+        <!-- Cosmetic Dentistry -->
+        <div class="service-card">
+          <i class="fa-solid fa-tooth"></i>
+          <h3>Cosmetic Service</h3>
+          <p>Enhance your smile with our cosmetic treatments such as whitening, veneers, and bonding.
+We help you achieve a natural, bright, and confident smile.</p>
+        </div>
+      </div>
+
+      <!-- Center Image -->
+      <div class="services-image">
+        <img src="images/teeth.png" alt="Dental Tools">
+      </div>
+
+      <div class="services-right">
+        <!-- Preventive -->
+        <div class="service-card">
+          <i class="fa-solid fa-shield-heart"></i>
+          <h3>Preventive Service</h3>
+          <p>Keep your teeth healthy with regular checkups, cleanings, and fluoride treatments.
+Our preventive care stops dental problems before they start.</p>
+        </div>
+
+        <!-- Restorative -->
+        <div class="service-card">
+          <i class="fa-solid fa-tooth"></i>
+          <h3>Restorative Service</h3>
+          <p>Restore your smile with fillings, crowns, bridges, or implants.
+We focus on rebuilding strength, comfort, and natural appearance.</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="view-more-container">
-    <button class="view-more-btn">View More</button>
-  </div>
-</section>
+</body>
+
+
+</body>
 
 <!-- What Our Patients Say Section -->
 <section class="testimonials-section">
@@ -98,7 +128,7 @@
     <div class="testimonial-card">
       <div class="stars">★★★★★</div>
       <p>"Excellent service and very professional staff. The pain-free extraction was amazing!"</p>
-      <span>- Zulu.Q</span>
+      <span>- Mafuya.M</span>
     </div>
 
     <div class="testimonial-card">
@@ -110,7 +140,7 @@
     <div class="testimonial-card">
       <div class="stars">★★★☆☆</div>
       <p>"Clean, modern facility with caring staff. My teeth have never felt better!"</p>
-      <span>- Mtolo.M</span>
+      <span>- Zulu.Q</span>
     </div>
   </div>
 </section>
@@ -120,8 +150,8 @@
     <h2>Ready to Schedule Your Visit?</h2>
     <p>Contact us today to book your appointment and take the first step towards better oral health.</p>
     <div class="contact-buttons">
-      <button class="btn">Book Appointment</button>
-      <button class="btn">Contact</button>
+      <a href="book-appointment.html" class="btn">Book Appointment</a>
+      <a href="Contact.html" class="btn">Contact</a>
     </div>
   </section>
 
