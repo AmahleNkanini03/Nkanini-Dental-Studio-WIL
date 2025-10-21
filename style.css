@@ -28,22 +28,18 @@
 }
 
 .book-appointment {
-  font-weight: bold;
+  font-weight: 700 !important; /* ensure bold */
   color: black;
-  font-size: 16px; /* Adjust if you want it larger */
+  font-size: 16px;
   cursor: pointer;
-  text-transform: uppercase; /* optional: if you want all caps */
+  text-transform: uppercase; /* optional */
+  text-decoration: none; /* remove underline */
 }
 
-/* --- Special styling for the Book Appointment link --- */
-.nav-links .book-appointment {
-  font-weight: 700;        /* bold */
-  color: #000;             /* black */
+.book-appointment:hover {
+  color: #007bff;
 }
 
-.nav-links .book-appointment:hover {
-  color: #007bff;          /* blue on hover for consistency */
-}
 
 
 .logo {
@@ -269,6 +265,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: 0.3s ease;
+  text-decoration: none;
 }
 
 .learn-btn:hover {
@@ -323,6 +320,7 @@ body {
   text-decoration: none;
   font-weight: 600;
   transition: background 0.3s ease;
+  text-decoration: none;
 }
 
 .view-more-btn:hover {
@@ -513,6 +511,7 @@ body {
   cursor: pointer;
   font-size: 1.05rem;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .btn:hover {
