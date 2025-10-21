@@ -1001,9 +1001,30 @@ body {
   --radius: 12px;
 }
 
+/* Universal layout control */
+section {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  margin: 0 auto;
+}
+
+.container, 
+.story-container, 
+.mission-vision, 
+.choose-grid, 
+.stats-container, 
+.testimonial-section {
+  max-width: 1200px;       /* limit content width */
+  margin: 0 auto;          /* center content */
+  padding: 0 20px;         /* prevent text from touching edges */
+}
+
+
 /* Hero */
 .about{
-  height:300px;
+  width: 100%;
+  height: 400px;
   background:url('images/background.png') center/cover no-repeat;
   display:flex;
   align-items:center;
@@ -1022,9 +1043,10 @@ body {
 
 /* ===== OUR STORY SECTION ===== */
 .story-section {
+    width: 100%;
+  max-width: 100vw;
+  padding: 80px 0;
   background: #fff;
-  padding: 50px 70px;
-  max-width: 1300px;
   margin: 60px auto 40px auto;
   box-shadow: 0 4px 6px rgba(0,0,0,0.08);
 }
@@ -1115,48 +1137,86 @@ body {
 }
 
 /* ===== MISSION & VISION BOX ===== */
-.mission-vision {
-  background: #2b8bff;
-  color: #fff;
-  padding: 50px 70px;
-  border-radius: 10px;
-  max-width: 1250px;
-  margin: 60px auto 40px auto;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+/* Mission & Vision Section */
+.mission-vision-section {
+  width: 100%;
+  background: #cde5fd;
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
 }
 
-.mission-vision h2 {
+.mission-vision-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  width: 100%;
+}
+
+/* Individual Cards */
+.mission-card,
+.vision-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mission-card:hover,
+.vision-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Titles */
+.mission-card h3,
+.vision-card h3 {
+  background: #ffffff;
+  color: #000000;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Icons */
+.mission-card h3 i,
+.vision-card h3 i {
   font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 10px;
 }
 
-.mission-vision p {
-  font-size: 15px;
-  margin-bottom: 10px;
+/* Text */
+.mission-card p,
+.vision-card p {
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 12px;
 }
 
-.mission-vision ul {
-  margin: 0 0 15px 20px;
-  padding: 0;
+.mission-card ul,
+.vision-card ul {
+  margin: 10px 0 0 20px;
 }
 
-.mission-vision ul li {
+.mission-card li,
+.vision-card li {
   margin-bottom: 6px;
-  list-style-type: disc;
-}
-
-.mission-vision hr {
-  border: none;
-  height: 1px;
-  background: rgba(255,255,255,0.6);
-  margin: 25px 0;
+  color: #444;
 }
 
 /* ===== WHY CHOOSE US ===== */
 .choose-us {
+  width: 100%;
+  background: #fff;
+  padding: 80px 0;
   text-align: center;
-  padding: 20px 20px 60px;
+  padding-bottom: 10px;
 }
 
 .choose-us h2 {
@@ -1243,6 +1303,9 @@ body {
 
    /* ====== STATS SECTION (blue rounded box) ====== */
     .stats-wrapper {
+        width: 100%;
+  padding: 60px 0;
+  margin: 0;
       display: flex;
       justify-content: center;
       margin-top: 60px;
@@ -1258,8 +1321,8 @@ body {
       justify-content: space-around;
       align-items: center;
       gap: 100px;
-      width: 80%;
-      max-width: 1000px;
+      width: 90%;
+      max-width: 1400px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
@@ -1386,6 +1449,14 @@ body {
   padding: 60px 80px;
   font-family: 'Segoe UI', sans-serif;
 }
+
+.doctor-section h2 {
+  text-align: center;
+  color: #0078ff;
+  font-size: 28px;
+  margin-bottom: 40px;
+  font-weight: 700;
+} 
 
 .doctor-container {
   display: flex;
