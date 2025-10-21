@@ -286,13 +286,13 @@ body {
 }
 
 /* Section */
-.services-section {
+.section-services {
   width: 100%;
   max-width: 1300px;
   margin: 80px auto;
 }
 
-.services-header {
+.header-services {
   display: flex;
   justify-content: space-between;
   align-items: center; /* moves items toward the top */
@@ -301,7 +301,7 @@ body {
   position: relative;
 }
 
-.services-header .title {
+.header-services .title {
   position: absolute;
   left: 40%;
   font-size: 30px;
@@ -328,7 +328,7 @@ body {
 }
 
 /* Services Layout */
-.services-content {
+.content-services {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -336,15 +336,15 @@ body {
 }
 
 /* Left & Right Columns */
-.services-left,
-.services-right {
+.left-services,
+.right-services {
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
 
 /* Rectangle Service Cards (Wider) */
-.service-card {
+.card-service {
   width: 340px;
   height: 130px;
   background: #fff;
@@ -359,33 +359,33 @@ body {
   box-shadow: 0 1px 5px rgba(0,0,0,0.05);
 }
 
-.service-card:hover {
+.card-service:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 }
 
 /* Icons */
-.service-card i {
+.card-service i {
   font-size: 30px;
   color: #0094ff;
   margin-bottom: 8px;
 }
 
-.service-card h3 {
+.card-service h3 {
   font-size: 17px;
   font-weight: 700;
   margin-bottom: 6px;
   color: #0b0c20;
 }
 
-.service-card p {
+.card-service p {
   font-size: 13px;
   color: #666;
   line-height: 1.4;
 }
 
 /* Center Image (Zoomed, No Hover) */
-.services-image img {
+.image-services img {
   width: 420px;
   max-width: 100%;
   transform: scale(1.1);
@@ -442,12 +442,12 @@ body {
 
 /* Responsive Design */
 @media (max-width: 900px) {
-  .services-section, .testimonials-section {
+  .section-services, .testimonials-section {
     margin: 30px 20px;
     padding: 30px 20px;
   }
 
-  .service-card {
+  .card-service {
     width: 90%;
   }
 
@@ -610,117 +610,6 @@ body {
 }
 
 /* ===========================
-   General Page Setup
-   =========================== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", Arial, sans-serif;
-}
-
-body {
-  color: #222;
-  background-color: #fff;
-  line-height: 1.6;
-}
-
-/* ===========================
-   Top Bar
-   =========================== */
-.top-bar {
-  background-color: #007bff;
-  color: #fff;
-  font-size: 0.9rem;
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 60px;
-}
-
-.top-bar span {
-  font-weight: 500;
-}
-
-/* ===========================
-   Navbar
-   =========================== */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 60px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.logo img {
-  width: 130px;
-  height: auto;
-}
-
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.navbar a:hover,
-.navbar a.active {
-  color: #007bff;
-}
-
-.book-appointment {
-  font-weight: bold;
-  color: black;
-  font-size: 16px; /* Adjust if you want it larger */
-  cursor: pointer;
-  text-transform: uppercase; /* optional: if you want all caps */
-}
-
-/* --- Special styling for the Book Appointment link --- */
-.nav-links .book-appointment {
-  font-weight: 700;        /* bold */
-  color: #000;             /* black */
-}
-
-.nav-links .book-appointment:hover {
-  color: #007bff;          /* blue on hover for consistency */
-}
-
-/* ===========================
-   Hero Section
-   =========================== */
-.hero {
-  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("images/background.png") center/cover no-repeat;
-  color: #fff;
-  text-align: center;
-  padding: 100px 20px;
-}
-
-.hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-.hero-content h1 span {
-  color: #007bff;
-}
-
-.hero-content p {
-  font-size: 1.1rem;
-}
-
-/* ===========================
    Contact Section
    =========================== */
 .contact-page {
@@ -876,116 +765,6 @@ body {
 
 .icons a img:hover {
   transform: scale(1.1);
-}
-/* ===========================
-   Footer
-   =========================== */
-.footer {
-  background-color: #0b0d25;
-  color: white;
-  padding: 50px 70px 20px;
-}
-
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 50px;
-  border-bottom: 1px solid #333;
-  padding-bottom: 30px;
-}
-
-.footer-logo {
-  width: 160px;
-  margin-bottom: 15px;
-}
-
-.footer-about p {
-  font-size: 1rem;
-  line-height: 1.6;
-  max-width: 400px;
-}
-
-.footer-links h4,
-.footer-contact h4 {
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.footer-links ul {
-  list-style: none;
-}
-
-.footer-links ul li {
-  margin-bottom: 8px;
-}
-
-.footer-links a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: #1ea3ff;
-}
-
-.footer-contact p {
-  margin-bottom: 10px;
-  line-height: 1.6;
-}
-
-/* Bottom Bar */
-.footer-bottom {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 15px;
-  font-size: 0.9rem;
-}
-
-.footer-policies a {
-  color: white;
-  text-decoration: none;
-  margin-left: 20px;
-  transition: color 0.3s ease;
-}
-
-.footer-policies a:hover {
-  color: #1ea3ff;
-}
-
-/* Responsive */
-@media (max-width: 800px) {
-  .footer-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-/* ===========================
-   Responsive Design
-   =========================== */
-@media (max-width: 768px) {
-  .contact-wrapper,
-  .map-social,
-  .footer-container {
-    flex-direction: column;
-  }
-
-  .contact-left,
-  .contact-right {
-    max-width: 100%;
-  }
-
-  .top-bar, .navbar {
-    padding: 10px 20px;
-  }
-
-  .hero-content h1 {
-    font-size: 2.2rem;
-  }
 }
 
 
