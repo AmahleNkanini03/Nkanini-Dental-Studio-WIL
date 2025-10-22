@@ -1049,6 +1049,7 @@ section {
   background: #fff;
   margin: 60px auto 40px auto;
   box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+  height: 550px;
 }
 
 .story-container {
@@ -1090,14 +1091,14 @@ section {
 
 /* Top image */
 .story-images .img-top {
-  width: 280px;
+  width: 400px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
 
 /* Bottom overlapping image */
 .story-images .img-bottom {
-  width: 180px;
+  width: 250px;
   border-radius: 10px;
   position: absolute;
   bottom: -40px;
@@ -1342,112 +1343,12 @@ section {
       margin: 0;
     }
 
-      /* ===== Testimonial Section ===== */
-    .testimonial-section {
-  background: #fff;
-  text-align: center;
-  padding: 60px 20px;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.testimonial-title {
-  color: var(--accent);
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 40px;
-}
-
-/* Layout of photo + quote */
-.testimonial-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  position: relative;
-  flex-wrap: wrap;
-}
-
-/* Photo styling */
-.testimonial-photo {
-  width: 260px;
-  height: 320px;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  flex-shrink: 0;
-  position: relative;
-  z-index: 2;
-}
-
-/* Quote box styling */
-.quote-box {
-  position: relative;
-  left: -20px; /* overlap adjustment */
-  border: 1.5px solid var(--accent);
-  border-radius: 8px;
-  padding: 25px 30px;
-  max-width: 580px;
-  background: #fff;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 180px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-  z-index: 1; /* ensures image appears above */
-}
-
-/* Quote text and author */
-.quote-text {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--text-color);
-  margin-bottom: 12px;
-}
-
-.quote-author {
-  font-weight: 600;
-  color: #000;
-}
-
-/* Responsive for smaller screens */
-@media (max-width: 768px) {
-  .testimonial-row {
-    flex-direction: column;
-  }
-  .quote-box {
-    left: 0;
-    margin-top: 20px;
-    max-width: 90%;
-  }
-}
-
-
-/*Our Team*/
-/* Hero */
-.team{
-  height:300px;
-  background:url('images/background.png') center/cover no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:relative;
-}
-.team::after{
-  content:"";
-  position:absolute; inset:0; background:rgba(0,0,0,0.45);
-}
-.team .lay{
-  position:relative; z-index:1; color:#fff; text-align:center; padding:0 20px; max-width:900px;
-}
-.team h2{ color: #00aaff; font-size:32px; margin-bottom:12px; }
-.team p{ font-size:16px; line-height:1.7; }
-
 /* === DOCTOR SECTION STYLING === */
 .doctor-section {
   background: #fff;
   padding: 60px 80px;
   font-family: 'Segoe UI', sans-serif;
+  height: 500px;
 }
 
 .doctor-section h2 {
@@ -1515,7 +1416,7 @@ section {
 
 /* Doctor photo */
 .doctor-image img {
-  width: 500px;
+  width: 450px;
   top: -60px;
   border-radius: 10px;
   position: relative;
