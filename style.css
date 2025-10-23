@@ -774,6 +774,10 @@ body {
 
 
 /*About Us*/
+/* Set global font for the entire page */
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
 :root{
   --accent: #0080ff;
   --muted-bg: #f7f8fa;
@@ -1126,87 +1130,6 @@ section {
       margin: 0;
     }
 
-      /* ===== Testimonial Section ===== */
-    .testimonial-section {
-  background: #fff;
-  text-align: center;
-  padding: 60px 20px;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.testimonial-title {
-  color: var(--accent);
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 40px;
-}
-
-/* Layout of photo + quote */
-.testimonial-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  position: relative;
-  flex-wrap: wrap;
-}
-
-/* Photo styling */
-.testimonial-photo {
-  width: 260px;
-  height: 320px;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  flex-shrink: 0;
-  position: relative;
-  z-index: 2;
-}
-
-/* Quote box styling */
-.quote-box {
-  position: relative;
-  left: -20px; /* overlap adjustment */
-  border: 1.5px solid var(--accent);
-  border-radius: 8px;
-  padding: 25px 30px;
-  max-width: 580px;
-  background: #fff;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 180px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-  z-index: 1; /* ensures image appears above */
-}
-
-/* Quote text and author */
-.quote-text {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: var(--text-color);
-  margin-bottom: 12px;
-}
-
-.quote-author {
-  font-weight: 600;
-  color: #000;
-}
-
-/* Responsive for smaller screens */
-@media (max-width: 768px) {
-  .testimonial-row {
-    flex-direction: column;
-  }
-  .quote-box {
-    left: 0;
-    margin-top: 20px;
-    max-width: 90%;
-  }
-}
-
-
 /*Our Team*/
 /* Hero */
 .team{
@@ -1228,11 +1151,16 @@ section {
 .team p{ font-size:16px; line-height:1.7; }
 
 /* === DOCTOR SECTION STYLING === */
+/* === DOCTOR SECTION STYLING === */
 .doctor-section {
   background: #fff;
-  padding: 60px 80px;
+  padding: 60px 20px; /* Reduced padding for smaller screens */
   font-family: 'Segoe UI', sans-serif;
-  height: 500px;
+  min-height: 500px; /* Changed from fixed height to min-height to allow expansion */
+  overflow: hidden; /* Prevent scrolling by hiding overflow */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .doctor-section h2 {
@@ -1249,7 +1177,7 @@ section {
   justify-content: space-between;
   max-width: 1100px;
   margin: 0 auto;
-  gap: 40px;
+  gap: 20px; /* Reduced gap for better fit */
 }
 
 .doctor-text {
@@ -1287,12 +1215,12 @@ section {
 /* Background image swirl */
 .doctor-image .image-bg {
   position: absolute;
-  top: -50px;
+  top: -20px; /* Reduced offset */
   left: 50%;
   transform: translateX(-50%);
-  width: 700px;
-  height: 700px;
-  background: url('images/dental-hygiene-concept-with-blue-background.png') no-repeat center center;
+  width: 400px; /* Reduced size for better fit */
+  height: 400px;
+  
   background-size: contain;
   z-index: 1;
   opacity: 0.9;
@@ -1300,8 +1228,7 @@ section {
 
 /* Doctor photo */
 .doctor-image img {
-  width: 450px;
-  top: -60px;
+  width: 300px; /* Reduced size to prevent overflow */
   border-radius: 10px;
   position: relative;
   z-index: 2;
@@ -1312,11 +1239,12 @@ section {
   .doctor-container {
     flex-direction: column;
     text-align: center;
+    gap: 10px; /* Further reduced gap */
   }
 
   .doctor-image {
     order: -1;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   .doctor-text h2 {
@@ -1324,12 +1252,18 @@ section {
   }
 
   .doctor-image img {
-    width: 260px;
+    width: 200px; /* Further reduced for smaller screens */
   }
 
   .doctor-image .image-bg {
-    width: 300px;
-    height: 300px;
+    width: 250px; /* Adjusted for smaller screens */
+    height: 250px;
+    top: 0; /* Adjusted to fit better */
+  }
+
+  .doctor-section {
+    min-height: auto; /* Allow section to shrink or grow as needed */
+    padding: 40px 20px; /* Reduced padding */
   }
 }
 
