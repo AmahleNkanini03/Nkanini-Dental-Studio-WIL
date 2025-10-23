@@ -117,7 +117,151 @@ if (form) {  // ✅ only run this if a form exists
   });
 }
 
-    
+// services javascript//
+
+document.querySelectorAll('.service-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const service = card.querySelector('h4').textContent;
+    const modal = document.createElement('div');
+    modal.classList.add('modal');
+    modal.innerHTML = `
+      <div class="modal-content">
+        <h3>${service}</h3>
+        <p>Learn more about our ${service.toLowerCase()} offerings. Contact us to schedule a consultation!</p>
+        <button class="modal-close">Close</button>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    modal.querySelector('.modal-close').addEventListener('click', () => modal.remove());
+  });
+});
+
+const hamburger = document.createElement('div');
+hamburger.classList.add('hamburger');
+hamburger.innerHTML = '☰';
+document.querySelector('.navbar').appendChild(hamburger);
+
+hamburger.addEventListener('click', () => {
+  document.querySelector('.navbar ul').classList.toggle('active');
+});
+
+// script.js
+
+const serviceData = {
+  'oral-surgery': {
+    title: 'Oral Surgery Services',
+    items: [
+      {
+        name: 'Tooth Extraction',
+        description: 'Simple extraction, Impacted tooth extractions, Removal of tooth roots.',
+        price: 'R400'
+      },
+      {
+        name: 'Wisdom Tooth Extraction',
+        description: 'Examination & Diagnosis, Non-Surgical Management, Post-Extraction Care.',
+        price: 'R700'
+      }
+    ]
+  },
+  'cosmetic': {
+    title: 'Cosmetic Services',
+    items: [
+      {
+        name: 'Teeth Jewelleries',
+        description: 'Small gems, Crystals, Stones.',
+        price: 'R700'
+      },
+      {
+        name: 'Gold & Silver Full',
+        description: 'Entire tooth, Gold or Silver, Fashion Purposes.',
+        price: 'TBA'  // Price was missing, set to TBA
+      },
+      {
+        name: 'All Other Shapes',
+        description: 'Gold or Platinum options available.',
+        price: 'Gold: R700, Platinum: R1300'
+      },
+      {
+        name: 'Platinum',
+        description: 'More Durable, Luxury Option, Fashion Purposes.',
+        price: 'R1500'
+      }
+    ]
+  },
+  'preventive': {
+    title: 'Preventive Services',
+    items: [
+      {
+        name: 'Scaling & Polishing',
+        description: 'Examination, Deep cleaning, Fluoride Treatment.',
+        price: 'R400'
+      }
+    ]
+  },
+  'restorative': {
+    title: 'Restorative Services',
+    items: [
+      {
+        name: 'Cementation',
+        description: 'Attaching Crowns, Fixing bridges, Securing inlays & onlays.',
+        price: 'R300'
+      }
+    ]
+  },
+  'orthodontics': {
+    title: 'Orthodontics',
+    items: [
+      {
+        name: 'Coming Soon',
+        description: 'Details for Orthodontics services will be added soon.',
+        price: 'TBA'
+      }
+    ]
+  }
+};
+
+document.querySelectorAll('.service-details-btn').forEach(button => {
+  button.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent card click from triggering if needed
+    const card = e.target.closest('.service-card');
+    const serviceKey = card.dataset.service;
+    const service = serviceData[serviceKey];
+
+    if (service) {
+      const modal = document.createElement('div');
+      modal.classList.add('modal');
+      let itemsHtml = service.items.map(item => `
+        <li>
+          <strong>${item.name}</strong>
+          <div class="description">${item.description}</div>
+          <div class="price">Price: ${item.price}</div>
+        </li>
+      `).join('');
+
+      modal.innerHTML = `
+        <div class="modal-content">
+          <h3>${service.title}</h3>
+          <ul>${itemsHtml}</ul>
+          <button class="modal-close">Close</button>
+        </div>
+      `;
+      document.body.appendChild(modal);
+
+      // Close modal
+      modal.querySelector('.modal-close').addEventListener('click', () => modal.remove());
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) modal.remove();
+      });
+    }
+  });
+});
+
+// Placeholder for form submission logic (e.g., send to server or display confirmation)
+  alert(`Appointment submitted!\n\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nService: ${data.service}\nDate: ${data.date}\nTime: ${data.time}\nMessage: ${data.message}`);
+  this.reset();
+});
+
+// Optional: Make entire card clickable if no button, but since we have button, it's fine
 
 
 

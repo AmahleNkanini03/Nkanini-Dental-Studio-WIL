@@ -6,6 +6,11 @@
   font-family: "Poppins", sans-serif;
 }
 
+html, body {
+  overflow-x: hidden;  /* Prevents horizontal scrolling */
+  width: 100%;
+}
+
 /* Top bar */
 .top-bar {
   background-color: #0094ff;
@@ -39,7 +44,6 @@
 .book-appointment:hover {
   color: #007bff;
 }
-
 
 
 .logo {
@@ -88,7 +92,6 @@
 .book-btn {
   font-weight: 600;
 }
-
 
 /* Hero section */
 .hero {
@@ -141,7 +144,6 @@
 .hero .btn:hover {
   background-color: #0056b3;
 }
-
 
 
 .hero::before {
@@ -284,35 +286,38 @@ body {
   background-color: #fff;
   color: #333;
 }
-
-/* Section */
-.services-section {
+/* === Services Section === */
+.services {
   width: 100%;
   max-width: 1300px;
   margin: 80px auto;
+  overflow: visible !important; /* ensure content shows fully */
+  height: auto !important;      /* allow section to grow with content */
 }
 
-.services-header {
+/* Header */
+.services__header {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* moves items toward the top */
+  align-items: center;
   margin-bottom: 40px;
   padding: 0 40px;
   position: relative;
 }
 
-.services-header .title {
+/* Title */
+.services__title {
   position: absolute;
   left: 40%;
   font-size: 30px;
   font-weight: 700;
   color: #0b0c20;
   text-align: center;
-  transform: translateY(-20px); /* pushes heading upward */
+  transform: translateY(-20px);
 }
 
-/* View More Button (Far Right) */
-.view-more-btn {
+/* View More Button */
+.services__view-more-btn {
   background-color: #0094ff;
   color: #fff;
   padding: 14px 36px;
@@ -320,31 +325,30 @@ body {
   text-decoration: none;
   font-weight: 600;
   transition: background 0.3s ease;
-  text-decoration: none;
 }
 
-.view-more-btn:hover {
+.services__view-more-btn:hover {
   background-color: #007bdb;
 }
 
-/* Services Layout */
-.services-content {
+/* Content Layout */
+.services__content {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 50px;
 }
 
-/* Left & Right Columns */
-.services-left,
-.services-right {
+/* Columns */
+.services__left,
+.services__right {
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
 
-/* Rectangle Service Cards (Wider) */
-.service-card {
+/* Service Cards */
+.services__card {
   width: 340px;
   height: 130px;
   background: #fff;
@@ -359,33 +363,35 @@ body {
   box-shadow: 0 1px 5px rgba(0,0,0,0.05);
 }
 
-.service-card:hover {
+.services__card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0,0,0,0.1);
 }
 
-/* Icons */
-.service-card i {
+/* Card Icons */
+.services__card i {
   font-size: 30px;
   color: #0094ff;
   margin-bottom: 8px;
 }
 
-.service-card h3 {
+/* Card Title */
+.services__card-title {
   font-size: 17px;
   font-weight: 700;
   margin-bottom: 6px;
   color: #0b0c20;
 }
 
-.service-card p {
+/* Card Text */
+.services__card-text {
   font-size: 13px;
   color: #666;
   line-height: 1.4;
 }
 
-/* Center Image (Zoomed, No Hover) */
-.services-image img {
+/* Center Image */
+.services__image img {
   width: 420px;
   max-width: 100%;
   transform: scale(1.1);
@@ -397,7 +403,6 @@ body {
   text-align: center;
   margin: 80px 80px 60px 80px; /* top right bottom left */
 }
-
 
 .testimonials-section h2 {
   color: #0b0c20;
@@ -447,7 +452,7 @@ body {
     padding: 30px 20px;
   }
 
-  .service-card {
+  .services__card {
     width: 90%;
   }
 
@@ -609,116 +614,6 @@ body {
   }
 }
 
-/* ===========================
-   General Page Setup
-   =========================== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", Arial, sans-serif;
-}
-
-body {
-  color: #222;
-  background-color: #fff;
-  line-height: 1.6;
-}
-
-/* ===========================
-   Top Bar
-   =========================== */
-.top-bar {
-  background-color: #007bff;
-  color: #fff;
-  font-size: 0.9rem;
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 60px;
-}
-
-.top-bar span {
-  font-weight: 500;
-}
-
-/* ===========================
-   Navbar
-   =========================== */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 60px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.logo img {
-  width: 130px;
-  height: auto;
-}
-
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.navbar a:hover,
-.navbar a.active {
-  color: #007bff;
-}
-
-.book-appointment {
-  font-weight: bold;
-  color: black;
-  font-size: 16px; /* Adjust if you want it larger */
-  cursor: pointer;
-  text-transform: uppercase; /* optional: if you want all caps */
-}
-
-/* --- Special styling for the Book Appointment link --- */
-.nav-links .book-appointment {
-  font-weight: 700;        /* bold */
-  color: #000;             /* black */
-}
-
-.nav-links .book-appointment:hover {
-  color: #007bff;          /* blue on hover for consistency */
-}
-
-/* ===========================
-   Hero Section
-   =========================== */
-.hero {
-  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("images/background.png") center/cover no-repeat;
-  color: #fff;
-  text-align: center;
-  padding: 100px 20px;
-}
-
-.hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-.hero-content h1 span {
-  color: #007bff;
-}
-
-.hero-content p {
-  font-size: 1.1rem;
-}
 
 /* ===========================
    Contact Section
@@ -825,7 +720,6 @@ body {
   transform: translateY(-2px);    /* lift slightly on hover */
 }
 
-
 .contact-right button {
   background: #fff;
   color: #007bff;
@@ -877,116 +771,6 @@ body {
 .icons a img:hover {
   transform: scale(1.1);
 }
-/* ===========================
-   Footer
-   =========================== */
-.footer {
-  background-color: #0b0d25;
-  color: white;
-  padding: 50px 70px 20px;
-}
-
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 50px;
-  border-bottom: 1px solid #333;
-  padding-bottom: 30px;
-}
-
-.footer-logo {
-  width: 160px;
-  margin-bottom: 15px;
-}
-
-.footer-about p {
-  font-size: 1rem;
-  line-height: 1.6;
-  max-width: 400px;
-}
-
-.footer-links h4,
-.footer-contact h4 {
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.footer-links ul {
-  list-style: none;
-}
-
-.footer-links ul li {
-  margin-bottom: 8px;
-}
-
-.footer-links a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: #1ea3ff;
-}
-
-.footer-contact p {
-  margin-bottom: 10px;
-  line-height: 1.6;
-}
-
-/* Bottom Bar */
-.footer-bottom {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 15px;
-  font-size: 0.9rem;
-}
-
-.footer-policies a {
-  color: white;
-  text-decoration: none;
-  margin-left: 20px;
-  transition: color 0.3s ease;
-}
-
-.footer-policies a:hover {
-  color: #1ea3ff;
-}
-
-/* Responsive */
-@media (max-width: 800px) {
-  .footer-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-/* ===========================
-   Responsive Design
-   =========================== */
-@media (max-width: 768px) {
-  .contact-wrapper,
-  .map-social,
-  .footer-container {
-    flex-direction: column;
-  }
-
-  .contact-left,
-  .contact-right {
-    max-width: 100%;
-  }
-
-  .top-bar, .navbar {
-    padding: 10px 20px;
-  }
-
-  .hero-content h1 {
-    font-size: 2.2rem;
-  }
-}
 
 
 /*About Us*/
@@ -1019,7 +803,6 @@ section {
   margin: 0 auto;          /* center content */
   padding: 0 20px;         /* prevent text from touching edges */
 }
-
 
 /* Hero */
 .about{
@@ -1343,6 +1126,107 @@ section {
       margin: 0;
     }
 
+      /* ===== Testimonial Section ===== */
+    .testimonial-section {
+  background: #fff;
+  text-align: center;
+  padding: 60px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.testimonial-title {
+  color: var(--accent);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+/* Layout of photo + quote */
+.testimonial-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+/* Photo styling */
+.testimonial-photo {
+  width: 260px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Quote box styling */
+.quote-box {
+  position: relative;
+  left: -20px; /* overlap adjustment */
+  border: 1.5px solid var(--accent);
+  border-radius: 8px;
+  padding: 25px 30px;
+  max-width: 580px;
+  background: #fff;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 180px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  z-index: 1; /* ensures image appears above */
+}
+
+/* Quote text and author */
+.quote-text {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 12px;
+}
+
+.quote-author {
+  font-weight: 600;
+  color: #000;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .testimonial-row {
+    flex-direction: column;
+  }
+  .quote-box {
+    left: 0;
+    margin-top: 20px;
+    max-width: 90%;
+  }
+}
+
+
+/*Our Team*/
+/* Hero */
+.team{
+  height:300px;
+  background:url('images/background.png') center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+.team::after{
+  content:"";
+  position:absolute; inset:0; background:rgba(0,0,0,0.45);
+}
+.team .lay{
+  position:relative; z-index:1; color:#fff; text-align:center; padding:0 20px; max-width:900px;
+}
+.team h2{ color: #00aaff; font-size:32px; margin-bottom:12px; }
+.team p{ font-size:16px; line-height:1.7; }
+
 /* === DOCTOR SECTION STYLING === */
 .doctor-section {
   background: #fff;
@@ -1448,7 +1332,6 @@ section {
     height: 300px;
   }
 }
-
 
 .team-section {
   display: flex;
