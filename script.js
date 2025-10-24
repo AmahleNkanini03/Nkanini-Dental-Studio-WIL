@@ -259,7 +259,7 @@ document.querySelectorAll('.service-details-btn').forEach(button => {
 // Placeholder for form submission logic (e.g., send to server or display confirmation)
   alert(`Appointment submitted!\n\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nService: ${data.service}\nDate: ${data.date}\nTime: ${data.time}\nMessage: ${data.message}`);
   this.reset();
-});
+
 
 // Optional: Make entire card clickable if no button, but since we have button, it's fine
 

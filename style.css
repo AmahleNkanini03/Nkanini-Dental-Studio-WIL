@@ -751,27 +751,6 @@ body {
   margin-right: 20px;
 }
 
-.social-links {
-  flex: 1;
-  text-align: left;
-}
-
-.social-links h3 {
-  font-size: 1.2rem;
-  margin-bottom: 15px;
-}
-
-.icons a img {
-  width: 35px;
-  height: 35px;
-  margin-right: 10px;
-  transition: transform 0.3s ease;
-}
-
-.icons a img:hover {
-  transform: scale(1.1);
-}
-
 
 /*About Us*/
 :root{
