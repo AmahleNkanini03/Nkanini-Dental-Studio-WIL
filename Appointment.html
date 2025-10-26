@@ -3,106 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nkanini Dental Studio</title>
+  <meta name="description" content="Book your dental appointment with Nkanini Dental Studio in Sterkspruit. Schedule oral surgery, cosmetic services, and more." />
+  <meta name="keywords" content="dental appointment, Sterkspruit dentist, Nkanini Dental Studio, book dental services" />
+  <title>Book Appointment | Nkanini Dental Studio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- Top Info Bar -->
   <div class="top-bar">
     <div class="top-left">
-      <span>081 324 6936 / 078 606 2612</span>
+      <span><i class="fas fa-phone"></i> 081 324 6936 / 078 606 2612</span>
     </div>
     <div class="top-right">
-      <span>Open: Monday–Saturday from 08h00am–17h00pm</span>
+      <span><i class="fas fa-clock"></i> Open: Monday–Saturday, 08:00–17:00</span>
     </div>
   </div>
 
- <header class="navbar">
+  <!-- Navigation Bar -->
+  <header class="navbar">
     <div class="logo">
-      <img src="images/logo.png" alt="Nkanini Dental Studio Logo">
+      <img src="images/logo.png" alt="Nkanini Dental Studio Logo" loading="lazy">
     </div>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="About Us.html">About Us</a></li>
-        <li><a href="Services.html" class="active">Services</a></li>
+        <li><a href="Services.html">Services</a></li>
         <li><a href="Contact.html">Contact Us</a></li>
-        <li><span class="book-appointment" class="active">Book Appointment</span></li>
+        <li><a href="book-appointment.html" class="active">Book Appointment</a></li>
       </ul>
     </nav>
+    <div class="hamburger">☰</div>
   </header>
 
-
-  <!-- Navigation Bar -->
-  <header class="navbar">
-  <div class="logo">
-    <img src="images/logo.png" alt="Nkanini Dental Studio Logo" loading="lazy">
-  </div>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="About Us.html">About Us</a></li>
-      <li><a href="Services.html" class="active">Services</a></li>
-      <li><a href="Contact.html">Contact Us</a></li>
-      <li><a href="book-appointment.html" class="book-appointment">Book Appointment</a></li>
-    </ul>
-  </nav>
-  <div class
   <!-- Hero Section -->
-  <section class="hero" data-aos="fade-up">
-    <div class="hero-overlay">
-      <h2>Book Your Appointment</h2>
-      <p>Schedule your visit with Nkanini Dental Studio and take the first step towards a healthier, brighter smile.</p>
-      <a href="#appointment-form" class="hero-btn">Get Started</a>
+  <section class="about" data-aos="fade-up">
+    <div class="overlay">
+      <h2>Book Your Dental Appointment</h2>
+      <p>Take the first step towards a confident, healthy smile with our expert care and cutting-edge technology.</p>
+      <a href="#appointment-form" class="hero-btn">Schedule Now</a>
+    </div>
+  </section>
+
+  <!-- Why Book With Us Section -->
+  <section class="why-book" data-aos="fade-up">
+    <div class="why-grid">
+      <div class="why-item">
+        <i class="fas fa-tooth"></i>
+        <h3>Expert Care</h3>
+        <p>Over a decade of delivering personalized, pain-free dental solutions.</p>
+      </div>
+      <div class="why-item">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Advanced Technology</h3>
+        <p>State-of-the-art equipment for precise, comfortable treatments.</p>
+      </div>
+      <div class="why-item">
+        <i class="fas fa-heart"></i>
+        <h3>Compassionate Service</h3>
+        <p>Your comfort and satisfaction are our top priorities.</p>
+      </div>
     </div>
   </section>
 
   <!-- Appointment Form Section -->
-  <section class="appointment-section" data-aos="fade-up">
+  <section class="appointment_section" id="appointment-form" data-aos="fade-up">
     <h2>Schedule Your Visit</h2>
-    <p>Fill out the form below to book your appointment. We’ll confirm your request within 24 hours.</p>
-    <form class="appointment-form" id="appointment-form">
-      <div class="form-group">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" placeholder="Your Name" required aria-label="Full Name" />
+    <p>Fill out the form below to book your appointment. We’ll confirm within 24 hours.</p>
+    <form class="appointment-form">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Your Full Name" required aria-label="Full Name" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Your Email" required aria-label="Email Address" />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required aria-label="Phone Number" />
+        </div>
+        <div class="form-group">
+          <label for="service">Select Service</label>
+          <select id="service" name="service" required aria-label="Select Dental Service">
+            <option value="" disabled selected>Choose a Service</option>
+            <option value="oral-surgery-tooth-extraction">Oral Surgery: Tooth Extraction (R400)</option>
+            <option value="oral-surgery-wisdom-tooth">Oral Surgery: Wisdom Tooth Extraction (R700)</option>
+            <option value="cosmetic-teeth-jewelleries">Cosmetic: Teeth Jewelleries (R700)</option>
+            <option value="cosmetic-gold-silver">Cosmetic: Gold & Silver Full (TBA)</option>
+            <option value="cosmetic-shapes-gold">Cosmetic: All Other Shapes - Gold (R700)</option>
+            <option value="cosmetic-shapes-platinum">Cosmetic: All Other Shapes - Platinum (R1300)</option>
+            <option value="cosmetic-platinum">Cosmetic: Platinum (R1500)</option>
+            <option value="preventive-scaling">Preventive: Scaling & Polishing (R400)</option>
+            <option value="restorative-cementation">Restorative: Cementation (R300)</option>
+            <option value="orthodontics">Orthodontics (TBA)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="date">Preferred Date</label>
+          <input type="date" id="date" name="date" required aria-label="Preferred Appointment Date" />
+        </div>
+        <div class="form-group">
+          <label for="time">Preferred Time</label>
+          <input type="time" id="time" name="time" min="08:00" max="17:00" required aria-label="Preferred Appointment Time" />
+        </div>
+        <div class="form-group full-width">
+          <label for="message">Additional Notes</label>
+          <textarea id="message" name="message" placeholder="Any specific requests or notes" aria-label="Additional Notes"></textarea>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="Your Email" required aria-label="Email Address" />
-      </div>
-      <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required aria-label="Phone Number" />
-      </div>
-      <div class="form-group">
-        <label for="service">Select Service</label>
-        <select id="service" name="service" required aria-label="Select Dental Service">
-          <option value="" disabled selected>Choose a Service</option>
-          <option value="oral-surgery-tooth-extraction">Oral Surgery: Tooth Extraction (R400)</option>
-          <option value="oral-surgery-wisdom-tooth">Oral Surgery: Wisdom Tooth Extraction (R700)</option>
-          <option value="cosmetic-teeth-jewelleries">Cosmetic: Teeth Jewelleries (R700)</option>
-          <option value="cosmetic-gold-silver">Cosmetic: Gold & Silver Full (TBA)</option>
-          <option value="cosmetic-shapes-gold">Cosmetic: All Other Shapes - Gold (R700)</option>
-          <option value="cosmetic-shapes-platinum">Cosmetic: All Other Shapes - Platinum (R1300)</option>
-          <option value="cosmetic-platinum">Cosmetic: Platinum (R1500)</option>
-          <option value="preventive-scaling">Preventive: Scaling & Polishing (R400)</option>
-          <option value="restorative-cementation">Restorative: Cementation (R300)</option>
-          <option value="orthodontics">Orthodontics (TBA)</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="date">Preferred Date</label>
-        <input type="date" id="date" name="date" required aria-label="Preferred Appointment Date" />
-      </div>
-      <div class="form-group">
-        <label for="time">Preferred Time</label>
-        <input type="time" id="time" name="time" min="08:00" max="17:00" required aria-label="Preferred Appointment Time" />
-      </div>
-      <div class="form-group">
-        <label for="message">Additional Notes</label>
-        <textarea id="message" name="message" placeholder="Any specific requests or notes" aria-label="Additional Notes"></textarea>
-      </div>
-      <button type="submit" class="btn">Submit Appointment</button>
+      <button type="submit" class="btn submit-btn">Submit Appointment</button>
     </form>
   </section>
 
