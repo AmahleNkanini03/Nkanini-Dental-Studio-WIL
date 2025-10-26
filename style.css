@@ -286,7 +286,7 @@ body {
   background-color: #fff;
   color: #333;
 }
-/* === Services Section === */
+/* === Services Section home page === */
 .services {
   width: 100%;
   max-width: 1300px;
@@ -1328,4 +1328,334 @@ section {
 .appointment-btn:hover {
   background: transparent;
   color: #fff;
+}
+
+/* services section */
+.services-section {
+  text-align: center;
+  padding: 80px 40px;
+  background: #f7faff;
+}
+
+.section-title {
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #007bff;
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #007bff;
+  margin-bottom: 50px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 25px;
+  justify-content: center;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.service-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: grey 0px 4px 8px;
+  cursor: pointer;
+}
+
+.service-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.service-card:hover img {
+  transform: scale(1.05);
+}
+
+.service-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 25px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  color: #fff;
+  text-align: left;
+}
+
+.service-overlay p {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 5px;
+}
+
+.service-overlay h4 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.service-details-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: #fff;
+  color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.service-details-btn:hover {
+  background: #e0f2fe;
+}
+
+.service-card-wide {
+  grid-column: span 2;
+}
+
+@media (max-width: 900px) {
+  .service-card-wide {
+    grid-column: span 1;
+  }
+}
+
+.view-all-btn {
+  margin-top: 40px;
+  padding: 12px 28px;
+  background: #3b82f6;
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.view-all-btn:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* Modal CSS */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 600px;
+  text-align: left;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h3 {
+  font-size: 1.8rem;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.modal-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.modal-content li {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.modal-content strong {
+  display: block;
+  font-size: 1.2rem;
+  color: #1e3a8a;
+}
+
+.modal-content .description {
+  font-size: 1rem;
+  color: #333;
+}
+
+.modal-content .price {
+  font-weight: 600;
+  color: #3b82f6;
+  margin-top: 5px;
+}
+
+.modal-close {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.modal-close:hover {
+  background: #2563eb;
+}
+
+/* Why Book Section */
+.why-book {
+  padding: 60px 40px;
+  text-align: center;
+  background: #fff;
+}
+
+.why-book h2 {
+  font-size: 2.5rem;
+  color: #007bff;
+  margin-bottom: 40px;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.why-item {
+  padding: 20px;
+  background: #adc2e8;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.why-item:hover {
+  transform: translateY(-5px);
+}
+
+.why-item i {
+  font-size: 2.5rem;
+  color: #3b82f6;
+  margin-bottom: 15px;
+}
+
+.why-item h3 {
+  font-size: 1.5rem;
+  color: #1e3a8a;
+  margin-bottom: 10px;
+}
+
+.why-item p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Appointment Form Section */
+.appointment_section {
+  padding: 80px 40px;
+  background: linear-gradient(to bottom, #f7faff, #fff);
+  text-align: center;
+}
+
+.appointment_section h2 {
+  font-size: 2.5rem;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.appointment_section p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.appointment-form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 1rem;
+  color: #1e3a8a;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+  outline: none;
+}
+
+.form-group textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.submit-btn {
+  padding: 15px 35px;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  background: #2563eb;
+  transform: scale(1.05);
 }
