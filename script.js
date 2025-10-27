@@ -318,3 +318,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     alert(`Appointment submitted!\n\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nService: ${data.service}\nDate: ${data.date}\nTime: ${data.time}\nMessage: ${data.message}`);
     this.reset();
   });
+
