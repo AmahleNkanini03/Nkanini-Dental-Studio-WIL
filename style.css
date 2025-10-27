@@ -1542,7 +1542,7 @@ section {
 
 .why-item {
   padding: 20px;
-  background: #adc2e8;
+  background: #d9e7ff;
   border-radius: 10px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
@@ -1572,7 +1572,7 @@ section {
 /* Appointment Form Section */
 .appointment_section {
   padding: 80px 40px;
-  background: linear-gradient(to bottom, #f7faff, #fff);
+  background: linear-gradient(to bottom, #d9e7ff, #fff);
   text-align: center;
 }
 
@@ -1653,6 +1653,7 @@ section {
   font-size: 1.1rem;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: 20px;
 }
 
 .submit-btn:hover {
