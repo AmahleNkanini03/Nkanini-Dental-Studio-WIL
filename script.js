@@ -117,48 +117,21 @@ if (form) {  // ✅ only run this if a form exists
   });
 }
 
-// services javascript//
-
-document.querySelectorAll('.service-card').forEach(card => {
-  card.addEventListener('click', () => {
-    const service = card.querySelector('h4').textContent;
-    const modal = document.createElement('div');
-    modal.classList.add('modal');
-    modal.innerHTML = `
-      <div class="modal-content">
-        <h3>${service}</h3>
-        <p>Learn more about our ${service.toLowerCase()} offerings. Contact us to schedule a consultation!</p>
-        <button class="modal-close">Close</button>
-      </div>
-    `;
-    document.body.appendChild(modal);
-    modal.querySelector('.modal-close').addEventListener('click', () => modal.remove());
-  });
-});
-
-const hamburger = document.createElement('div');
-hamburger.classList.add('hamburger');
-hamburger.innerHTML = '☰';
-document.querySelector('.navbar').appendChild(hamburger);
-
-hamburger.addEventListener('click', () => {
-  document.querySelector('.navbar ul').classList.toggle('active');
-});
-
 // script.js
 
+// Service data with customer-focused descriptions
 const serviceData = {
   'oral-surgery': {
     title: 'Oral Surgery Services',
     items: [
       {
         name: 'Tooth Extraction',
-        description: 'Simple extraction, Impacted tooth extractions, Removal of tooth roots.',
+        description: 'Gentle, pain-free removal for quick relief and faster healing—perfect for simple or impacted cases, ensuring your comfort every step.',
         price: 'R400'
       },
       {
         name: 'Wisdom Tooth Extraction',
-        description: 'Examination & Diagnosis, Non-Surgical Management, Post-Extraction Care.',
+        description: 'Expert care from diagnosis to recovery, minimizing discomfort and promoting swift healing for a brighter, healthier smile.',
         price: 'R700'
       }
     ]
@@ -168,22 +141,22 @@ const serviceData = {
     items: [
       {
         name: 'Teeth Jewelleries',
-        description: 'Small gems, Crystals, Stones.',
+        description: 'Add sparkle to your smile with customizable gems, crystals, or stones—elevate your style with a touch of luxury and personality.',
         price: 'R700'
       },
       {
         name: 'Gold & Silver Full',
-        description: 'Entire tooth, Gold or Silver, Fashion Purposes.',
-        price: 'TBA'  // Price was missing, set to TBA
+        description: 'Transform your teeth with full gold or silver coverings for a bold, fashionable look that turns heads and boosts confidence.',
+        price: 'TBA'
       },
       {
         name: 'All Other Shapes',
-        description: 'Gold or Platinum options available.',
+        description: 'Explore custom gold or platinum designs tailored to your vibe—durable, stylish options for that unique edge.',
         price: 'Gold: R700, Platinum: R1300'
       },
       {
         name: 'Platinum',
-        description: 'More Durable, Luxury Option, Fashion Purposes.',
+        description: 'Indulge in premium, long-lasting platinum enhancements for a luxurious, high-end fashion statement that lasts.',
         price: 'R1500'
       }
     ]
@@ -193,7 +166,7 @@ const serviceData = {
     items: [
       {
         name: 'Scaling & Polishing',
-        description: 'Examination, Deep cleaning, Fluoride Treatment.',
+        description: 'Revitalize your smile with thorough cleaning and fluoride protection—prevent issues early for lasting oral health and a radiant glow.',
         price: 'R400'
       }
     ]
@@ -203,7 +176,7 @@ const serviceData = {
     items: [
       {
         name: 'Cementation',
-        description: 'Attaching Crowns, Fixing bridges, Securing inlays & onlays.',
+        description: 'Secure crowns, bridges, or inlays with precision for a natural, durable restoration that restores function and aesthetics seamlessly.',
         price: 'R300'
       }
     ]
@@ -213,56 +186,140 @@ const serviceData = {
     items: [
       {
         name: 'Coming Soon',
-        description: 'Details for Orthodontics services will be added soon.',
+        description: 'Straighten your smile with innovative solutions—watch for our upcoming services designed for perfect alignment and confidence.',
         price: 'TBA'
       }
     ]
   }
 };
 
-document.querySelectorAll('.service-details-btn').forEach(button => {
-  button.addEventListener('click', (e) => {
-    e.stopPropagation(); // Prevent card click from triggering if needed
-    const card = e.target.closest('.service-card');
-    const serviceKey = card.dataset.service;
-    const service = serviceData[serviceKey];
+// Wait for DOM to load to ensure buttons are available
+document.addEventListener('DOMContentLoaded', () => {
+  // Debug: Log to confirm script is running
+  console.log('script.js loaded');
 
-    if (service) {
-      const modal = document.createElement('div');
-      modal.classList.add('modal');
-      let itemsHtml = service.items.map(item => `
-        <li>
-          <strong>${item.name}</strong>
-          <div class="description">${item.description}</div>
-          <div class="price">Price: ${item.price}</div>
-        </li>
-      `).join('');
+  // Handle button clicks for "View Details & Prices"
+  const buttons = document.querySelectorAll('.service-details-btn');
+  console.log(`Found ${buttons.length} service buttons`); // Debug: Check if buttons are found
 
-      modal.innerHTML = `
-        <div class="modal-content">
-          <h3>${service.title}</h3>
-          <ul>${itemsHtml}</ul>
-          <button class="modal-close">Close</button>
-        </div>
-      `;
-      document.body.appendChild(modal);
+  buttons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent card click from triggering
+      console.log('View Details button clicked'); // Debug: Confirm click
+      const card = e.target.closest('.service-card');
+      const serviceKey = card.dataset.service;
+      const service = serviceData[serviceKey];
 
-      // Close modal
-      modal.querySelector('.modal-close').addEventListener('click', () => modal.remove());
-      modal.addEventListener('click', (event) => {
-        if (event.target === modal) modal.remove();
-      });
-    }
+      if (service) {
+        showModal(service);
+      } else {
+        console.error(`Service data not found for key: ${serviceKey}`);
+      }
+    });
+  });
+
+  // Handle entire card clicks
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('service-details-btn')) {
+        console.log('Service card clicked'); // Debug: Confirm card click
+        const serviceKey = card.dataset.service;
+        const service = serviceData[serviceKey];
+        if (service) {
+          showModal(service);
+        } else {
+          console.error(`Service data not found for key: ${serviceKey}`);
+        }
+      }
+    });
   });
 });
 
-// Placeholder for form submission logic (e.g., send to server or display confirmation)
-  alert(`Appointment submitted!\n\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nService: ${data.service}\nDate: ${data.date}\nTime: ${data.time}\nMessage: ${data.message}`);
-  this.reset();
+// Function to create and show modal
+function showModal(service) {
+  console.log('Showing modal for:', service.title); // Debug: Confirm modal creation
+  const existingModal = document.querySelector('.modal');
+  if (existingModal) existingModal.remove();
 
+  const modal = document.createElement('div');
+  modal.classList.add('modal');
+  const itemsHtml = service.items.map(item => `
+    <li>
+      <i class="fas fa-tooth icon"></i>
+      <strong>${item.name}</strong>
+      <div class="description">${item.description}</div>
+      <div class="price">Price: ${item.price}</div>
+    </li>
+  `).join('');
 
-// Optional: Make entire card clickable if no button, but since we have button, it's fine
+  modal.innerHTML = `
+    <div class="modal-content" data-aos="zoom-in">
+      <h3>${service.title}</h3>
+      <p class="modal-intro">Discover how our advanced techniques can transform your smile with minimal discomfort.</p>
+      <ul>${itemsHtml}</ul>
+      <div class="modal-actions">
+        <a href="book-appointment.html?service=${encodeURIComponent(service.title)}" class="btn book-btn">Book Now</a>
+        <button class="modal-close">Close</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
 
+  // Close modal on button click
+  modal.querySelector('.modal-close').addEventListener('click', () => {
+    console.log('Modal closed'); // Debug: Confirm close
+    modal.remove();
+  });
 
+  // Close modal on outside click
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      console.log('Modal closed via outside click'); // Debug: Confirm close
+      modal.remove();
+    }
+  });
 
+  // Re-initialize AOS for dynamic content
+  AOS.refresh();
+}
 
+// Initialize AOS for animations
+AOS.init({
+  duration: 800,
+  easing: 'ease-in-out',
+  once: true
+});
+
+// Hamburger menu toggle for mobile
+document.querySelector('.hamburger')?.addEventListener('click', () => {
+  console.log('Hamburger menu toggled'); // Debug: Confirm toggle
+  document.querySelector('.navbar ul').classList.toggle('active');
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+
+// Form submission handling
+  document.querySelector('.appointment-form')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      service: formData.get('service'),
+      date: formData.get('date'),
+      time: formData.get('time'),
+      message: formData.get('message')
+    };
+    // Placeholder for form submission (replace with API call in production)
+    alert(`Appointment submitted!\n\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nService: ${data.service}\nDate: ${data.date}\nTime: ${data.time}\nMessage: ${data.message}`);
+    this.reset();
+  });
