@@ -1243,7 +1243,7 @@ section {
   }
 
   .doctor-section {
-    min-height: auto; /* Allow section to shrink or grow as needed */
+    min-height: 0; /* Use minimum value to allow shrinking */
     padding: 40px 20px; /* Reduced padding */
   }
 }
