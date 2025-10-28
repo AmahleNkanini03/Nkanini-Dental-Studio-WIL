@@ -86,18 +86,28 @@
       </div>
     </div>
 
-    <!-- Right Side: Contact Form -->
-    <div class="contact-right">
-      <h2>Send a Message</h2>
-      <form id="messageForm">
-        <input type="text" placeholder="Full Name" required>
-        <input type="tel" placeholder="Phone Number" required>
-        <input type="email" placeholder="Email Address" required>
-        <textarea rows="5" placeholder="Message" required></textarea>
-        <input type="submit" value="Submit" class="custom-submit-btn">
-      </form>
-    </div>
-  </div>
+
+<div class="contact-right">
+  <h2>Send a Message</h2>
+
+  <form id="messageForm" action="https://formspree.io/f/mldogojb" method="POST">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+    <label for="email">Email Address</label>
+    <input type="email" id="email" name="_replyto" placeholder="Enter your email" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="4" placeholder="Type your message here..." required></textarea>
+
+    <input type="submit" value="Send Message" class="custom-submit-btn">
+  </form>
+
+  <p id="form-status"></p>
+</div>
 
   <!-- Map and Social Section -->
   <div class="map-social">
@@ -147,6 +157,33 @@
     </div>
   </footer>
 
-<script src="script.js"></script>
+<script>
+  const messageForm = document.getElementById("messageForm");
+  const status = document.getElementById("form-status");
+
+  messageForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    status.textContent = "Sending...";
+
+    try {
+      const response = await fetch(messageForm.action, {
+        method: messageForm.method,
+        body: new FormData(messageForm),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        status.textContent = "✅ Message sent successfully!";
+        messageForm.reset();
+      } else {
+        status.textContent = "❌ Error sending message. Please try again.";
+      }
+    } catch (error) {
+      status.textContent = "⚠️ Network error. Please check your connection.";
+    }
+  });
+</script>
+
+
 </body>
 </html>

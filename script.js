@@ -318,3 +318,40 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     alert(`Appointment submitted!\n\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nService: ${data.service}\nDate: ${data.date}\nTime: ${data.time}\nMessage: ${data.message}`);
     this.reset();
   });
+
+
+
+  // Function to animate numbers smoothly
+  function animateCountUp(el) {
+    const target = +el.getAttribute("data-target");
+    const duration = 2000; // total animation time (ms)
+    const frameRate = 30; // update rate per second
+    const totalFrames = Math.round(duration / (1000 / frameRate));
+    let frame = 0;
+
+    const counter = setInterval(() => {
+      frame++;
+      const progress = frame / totalFrames;
+      const value = Math.floor(target * progress);
+      el.textContent = value;
+      if (frame === totalFrames) {
+        clearInterval(counter);
+        el.textContent = target + "+"; // adds the "+" at the end
+      }
+    }, 1000 / frameRate);
+  }
+
+  // Trigger animation once when section appears
+  const statsSection = document.querySelector("#stats");
+  const statNumbers = document.querySelectorAll(".stat-item h2");
+  let started = false;
+
+  window.addEventListener("scroll", () => {
+    const sectionTop = statsSection.getBoundingClientRect().top;
+    const triggerPoint = window.innerHeight * 0.8;
+
+    if (sectionTop < triggerPoint && !started) {
+      statNumbers.forEach(num => animateCountUp(num));
+      started = true;
+    }
+  });
