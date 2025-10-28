@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <!-- Navigation Bar -->
+    <!-- Navigation Bar -->
   <header class="navbar">
     <div class="logo">
       <img src="images/logo.png" alt="Nkanini Dental Studio Logo">
@@ -26,13 +26,13 @@
     </div>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="About Us.html" class="active">About Us</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="About Us.html">About Us</a></li>
         <li><a href="Services.html">Services</a></li>
         <li><a href="Contact.html">Contact Us</a></li>
-        <span class="book-appointment">Book Appointment</span>
-
-      </ul>
+        <li><a href="Appointment.html" class="book-appointment">Book Appointment</a></li>
+        
+</ul>
     </nav>
   </header>
 
@@ -114,7 +114,8 @@
       <div class="icon-box"><i class="fas fa-id-card"></i></div>
       <div class="choose-text">
         <h3>Recognised by all major medical aids</h3>
-        <p>— making it easy and convenient for patients with cover.</p>
+        <p>We’re contracted with all major medical aids for your convenience.
+           Enjoy hassle-free, quality dental care covered by your plan.</p>
       </div>
     </div>
 
@@ -122,7 +123,8 @@
       <div class="icon-box"><i class="fas fa-hand-holding-usd"></i></div>
       <div class="choose-text">
         <h3>Cash patients are welcome</h3>
-        <p>— affordable options for those without medical aid.</p>
+        <p>We gladly accept cash payments to make our services accessible to everyone.
+           Affordable options ensure no one is left behind.</p>
       </div>
     </div>
 
@@ -130,7 +132,8 @@
       <div class="icon-box"><i class="fas fa-user-md"></i></div>
       <div class="choose-text">
         <h3>Friendly, dedicated team</h3>
-        <p>— always ready to assist with information, advice, and personalised treatment.</p>
+        <p>Our caring team is always ready to assist with warmth and professionalism. 
+          We aim to make every visit comfortable and stress-free.</p>
       </div>
     </div>
 
@@ -138,29 +141,32 @@
       <div class="icon-box"><i class="fas fa-tooth"></i></div>
       <div class="choose-text">
         <h3>Affordable, reliable services</h3>
-        <p>— ensuring that dental care is accessible for people of all social and financial backgrounds.</p>
+        <p>We offer trusted dental care at reasonable prices without compromising quality.
+           Your oral health and confidence are our top priorities.</p>
       </div>
     </div>
   </div>
 </section>
  
 <!-- ===== STATS SECTION ===== -->
-  <section class="stats-wrapper">
-    <div class="stats-container">
-      <div class="stat-item">
-        <h2>500+</h2>
-        <p>Happy Patients</p>
-      </div>
-      <div class="stat-item">
-        <h2>5+</h2>
-        <p>Years of Experience</p>
-      </div>
-      <div class="stat-item">
-        <h2>5+</h2>
-        <p>Services Offered</p>
-      </div>
+<section class="stats-wrapper" id="stats">
+  <div class="stats-container">
+    <div class="stat-item">
+      <!-- start from 100 and count to 500 -->
+      <h2 data-start="100" data-target="500">100</h2>
+      <p>Happy Patients</p>
     </div>
-  </section>
+    <div class="stat-item">
+      <!-- start from 1 and count to 5 -->
+      <h2 data-start="1" data-target="5">1</h2>
+      <p>Years of Experience</p>
+    </div>
+    <div class="stat-item">
+      <h2 data-start="1" data-target="5">1</h2>
+      <p>Services Offered</p>
+    </div>
+  </div>
+</section>
 
 
   <!-- DOCTOR PROFILE SECTION -->
@@ -169,7 +175,7 @@
   <div class="doctor-container">
     <!-- Left Text -->
     <div class="doctor-text">
-      <h2>Dr Sandile<br><span>Nkanini</span></h2>
+      <h2>Dr Sandile Nkanini <br><span>Founder and Senior Dentist</span></h2>
       <p>
         Meet the heart behind Nkanini Dental Studio. With a passion for making dentistry affordable and accessible, 
         Dr. Nkanini founded the practice to serve communities in both Sterkspruit (Eastern Cape) and Reitz (Free State).
@@ -214,13 +220,15 @@
   </div>
 </section>
 
-<!-- BOOK APPOINTMENT BANNER -->
-<section class="appointment-banner">
-  <p class="appointment-text">
-    "Behind every confident smile is a caring team. Meet us in person — schedule your visit and experience dentistry that puts you first."
-  </p>
-  <a href="Appointment.html" class="appointment-btn">Book Appointment</a>
-</section>
+<!-- Contact Section -->
+  <section class="contact-section">
+    <h2>Ready to Schedule Your Visit?</h2>
+    <p>Contact us today to book your appointment and take the first step towards better oral health.</p>
+    <div class="contact-buttons">
+      <a href="book-appointment.html" class="btn">Book Appointment</a>
+      <a href="Contact.html" class="btn">Contact</a>
+    </div>
+  </section>
 
 
 
@@ -259,7 +267,71 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+  // Easing function (easeOutCubic)
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  // Animate a single element from start -> end over duration (ms)
+  function animateCount(el, duration = 1500) {
+    const start = Number(el.dataset.start) || 0;
+    const end = Number(el.dataset.target) || 0;
+    if (isNaN(start) || isNaN(end)) return;
+
+    // If start >= end, just show end and exit
+    if (start >= end) {
+      el.textContent = `${end}+`;
+      return;
+    }
+
+    let startTime = null;
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeOutCubic(progress);
+      const current = Math.floor(start + (end - start) * eased);
+      el.textContent = current + (progress === 1 ? '+' : '');
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  // IntersectionObserver options
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.3 // trigger when ~30% of the container is visible
+  };
+
+  // Observe the stats-container so we trigger once
+  document.addEventListener('DOMContentLoaded', () => {
+    const statsContainer = document.querySelector('.stats-container');
+    if (!statsContainer) return;
+
+    const statEls = statsContainer.querySelectorAll('.stat-item h2');
+    let started = false;
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !started) {
+          // Optionally stagger animations
+          statEls.forEach((el, i) => {
+            setTimeout(() => animateCount(el, 1400), i * 150); // stagger by 150ms
+          });
+          started = true;
+          obs.unobserve(statsContainer); // stop observing
+        }
+      });
+    }, observerOptions);
+
+    observer.observe(statsContainer);
+  });
+</script>
+  
 </body>
 </html>
 

@@ -854,14 +854,14 @@ section {
 }
 
 .story-text h2 {
-  font-size: 28px;
-  color: #000;
+  font-size: 32px;
+  color: #00aaff;
   margin-bottom: 15px;
   text-align: left;
 }
 
 .story-text p {
-  font-size: 16px;
+  font-size: 17px;
   color: #333;
   line-height: 1.7;
   margin-bottom: 10px;
@@ -879,18 +879,21 @@ section {
 /* Top image */
 .story-images .img-top {
   width: 400px;
+  height: 300px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
 
 /* Bottom overlapping image */
 .story-images .img-bottom {
-  width: 250px;
+  width: 300px;
+  height: 200px;
   border-radius: 10px;
   position: absolute;
   bottom: -40px;
   right: -20px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+
 }
 
 /* Responsive layout */
@@ -1150,7 +1153,7 @@ section {
 .team h2{ color: #00aaff; font-size:32px; margin-bottom:12px; }
 .team p{ font-size:16px; line-height:1.7; }
 
-/* === DOCTOR SECTION STYLING === */
+
 /* === DOCTOR SECTION STYLING === */
 .doctor-section {
   background: #fff;
@@ -1180,6 +1183,17 @@ section {
   gap: 20px; /* Reduced gap for better fit */
 }
 
+.doctor-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 20px;
+  flex-direction: row-reverse; /* 👈 This swaps the image and text */
+}
+
+
 .doctor-text {
   flex: 1 1 55%;
 }
@@ -1193,8 +1207,14 @@ section {
 }
 
 .doctor-text h2 span {
-  color: #0071ce;
+  display: block;            /* puts it on its own line */
+  font-size: 20px;           /* smaller than main heading */
+  color: #1a73e8;              /* softer grey tone */
+  font-weight: 500;          /* lighter than the name */
+  margin-top: 8px;           /* little spacing from the name */
+  letter-spacing: 0.5px;     /* slight spacing for elegance */
 }
+
 
 .doctor-text p {
   font-size: 16px;
@@ -1262,59 +1282,88 @@ section {
   }
 
   .doctor-section {
-    min-height: auto; /* Allow section to shrink or grow as needed */
+    min-height: 0; /* Use minimum value to allow shrinking */
     padding: 40px 20px; /* Reduced padding */
   }
 }
 
+/* === TEAM SECTION === */
 .team-section {
   display: flex;
   flex-direction: column;
-  align-items: center;   /* centers all cards horizontally */
-  gap: 30px;             /* spacing between cards */
-  margin: 50px auto;
-  max-width: 1000px;      /* prevents it from stretching too wide */
+  align-items: center;
+  gap: 40px; /* a bit more breathing space between team members */
+  margin: 60px auto;
+  max-width: 1100px; /* match doctor section max width */
+  font-family: 'Segoe UI', sans-serif;
+  padding: 0 20px; /* same side padding as doctor section */
 }
 
 .team-member {
   display: flex;
-  align-items: flex-start;
+  align-items: center; /* vertically align image and text */
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 100%;           /* each card same width */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 1000px; /* keeps it visually aligned with doctor section */
+  gap: 30px; /* spacing between image and text */
 }
 
 .team-member img {
-  width: 300px;
+  width: 280px; /* slightly smaller for balance */
   height: auto;
   border-radius: 10px;
-  margin-right: 20px;
+  flex-shrink: 0; /* prevents image from shrinking */
+  object-fit: cover;
+}
+
+.team-info {
+  flex: 1; /* allows text to fill remaining space */
 }
 
 .team-info h3 {
-  color: #0094ff;
-  margin-bottom: 5px;
+  font-size: 24px;
+  color: #1a73e8;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 
-  /* Responsive */
-  @media (max-width: 600px) {
-    .team-member {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
+.team-info p {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
 
-    .team-member img {
-      width: 200px;
-      height: 200px;
-    }
+.team-info p strong {
+  color: #0078ff;
+  font-weight: 600;
+}
 
-    .member-info {
-      margin-top: 15px;
-    }
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 900px) {
+  .team-member {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
   }
+
+  .team-member img {
+    width: 200px;
+    margin-bottom: 20px;
+  }
+
+  .team-info {
+    text-align: center;
+  }
+
+  .team-info h3 {
+    font-size: 22px;
+  }
+}
+
 
   /* ===== BOOK APPOINTMENT BANNER ===== */
 .appointment-banner {
@@ -1563,7 +1612,7 @@ section {
 
 .why-item {
   padding: 20px;
-  background: #adc2e8;
+  background: #d9e7ff;
   border-radius: 10px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
@@ -1593,7 +1642,7 @@ section {
 /* Appointment Form Section */
 .appointment_section {
   padding: 80px 40px;
-  background: linear-gradient(to bottom, #f7faff, #fff);
+  background: linear-gradient(to bottom, #d9e7ff, #fff);
   text-align: center;
 }
 
@@ -1674,6 +1723,8 @@ section {
   font-size: 1.1rem;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
+  margin-top: 20px;
+  width: auto;
 }
 
 .submit-btn:hover {

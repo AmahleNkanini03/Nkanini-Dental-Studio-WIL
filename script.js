@@ -290,11 +290,6 @@ AOS.init({
   once: true
 });
 
-// Hamburger menu toggle for mobile
-document.querySelector('.hamburger')?.addEventListener('click', () => {
-  console.log('Hamburger menu toggled'); // Debug: Confirm toggle
-  document.querySelector('.navbar ul').classList.toggle('active');
-});
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
