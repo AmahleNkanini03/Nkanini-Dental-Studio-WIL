@@ -363,3 +363,43 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     this.reset();
   });
 
+  document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  const nav       = document.querySelector('.navbar nav');
+  if (!hamburger || !nav) return;
+
+  hamburger.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    hamburger.classList.toggle('active');
+  });
+
+  // close menu when a link is clicked
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('active');
+    hamburger.classList.remove('active');
+  }));
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.querySelector('.hamburger');
+  const nav = document.querySelector('.navbar nav'); // ← Fixed: target <nav>
+  const ul = nav ? nav.querySelector('ul') : null;
+
+  if (!hamburger || !nav || !ul) {
+    console.error('Hamburger or nav not found!');
+    return;
+  }
+
+  hamburger.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    hamburger.classList.toggle('active');
+  });
+
+  // Close when clicking a link
+  ul.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('active');
+      hamburger.classList.remove('active');
+    });
+  });
+});
