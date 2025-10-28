@@ -345,39 +345,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// LAST DOMContentLoaded - Contact form fallback (kept as-is)
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.querySelector('form');
+// Form submission handling
+  document.querySelector('.appointment-form')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      service: formData.get('service'),
+      date: formData.get('date'),
+      time: formData.get('time'),
+      message: formData.get('message')
+    };
+    // Placeholder for form submission (replace with API call in production)
+    alert(`Appointment submitted!\n\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nService: ${data.service}\nDate: ${data.date}\nTime: ${data.time}\nMessage: ${data.message}`);
+    this.reset();
+  });
 
-  if (form) {
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-
-      const formData = {
-        name: form.querySelector('input[name="name"]').value,
-        email: form.querySelector('input[name="email"]').value,
-        phone: form.querySelector('input[name="phone"]').value,
-        message: form.querySelector('textarea[name="message"]').value
-      };
-
-      try {
-     const response = await fetch('/send-email', {  // <-- Also updated to relative URL
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
-        });
-
-        const result = await response.json();
-        if (result.success) {
-          alert(result.message);
-          form.reset();
-        } else {
-          alert('Something went wrong. Please try again.');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        alert('Server error. Please try again later.');
-      }
-    });
-  }
-});

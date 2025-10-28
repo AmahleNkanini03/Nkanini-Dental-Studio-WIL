@@ -11,27 +11,66 @@ html, body {
   width: 100%;
 }
 
-/* Top bar */
+/* Top Bar */
 .top-bar {
   background-color: #0094ff;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 17px 80px;
+  padding: 12px 80px;
   font-size: 18px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  margin: 0;           /* ✅ remove any default margin */
+  border: none;        /* ✅ ensure no border adds spacing */
 }
 
-/* Navbar */
+/* Navbar (directly under top bar) */
 .navbar {
   background-color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 80px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 54px;           /* ✅ same as the top-bar height — adjust if needed */
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  margin: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* keep or remove for cleaner join */
 }
 
+/* Prevent overlap with content */
+body {
+  margin: 0;
+  padding-top: 120px;  /* adjust based on total header height */
+}
+
+
+/* Top bar */ 
+.top-bar {
+   background-color: #0094ff; 
+  color: white; display: flex; 
+  justify-content: space-between; 
+  align-items: center; padding: 17px 80px; 
+  font-size: 18px;
+ } 
+  
+  /* Navbar */ 
+  .navbar { 
+    background-color: #fff; display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 12px 80px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  } 
+
+  
 .book-appointment {
   font-weight: 700 !important; /* ensure bold */
   color: black;
@@ -185,9 +224,10 @@ html, body {
   background-color: #0094ff;
   color: white;
   text-decoration: none;
-  padding: 20px 30px;
+  padding: 15px 30px; /* reduced from 20px 30px */
   border-radius: 5px;
-  font-weight: 800;
+  font-size: 14px;    /* slightly smaller text */
+  font-weight: 700;   /* still bold but not too thick */
   transition: background 0.3s ease;
 }
 
@@ -344,13 +384,13 @@ body {
 .services__right {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 50px;
 }
 
 /* Service Cards */
 .services__card {
   width: 340px;
-  height: 130px;
+  height: 200px;
   background: #fff;
   border: 1px solid #e0e0e0;
   border-radius: 6px;
@@ -401,7 +441,8 @@ body {
 /* === Testimonials Section === */
 .testimonials-section {
   text-align: center;
-  margin: 80px 80px 60px 80px; /* top right bottom left */
+  margin: 200px 80px 60px 40px; /* top, right, bottom, left */
+  overflow: hidden;
 }
 
 .testimonials-section h2 {
@@ -411,56 +452,72 @@ body {
   font-weight: 700;
 }
 
-.testimonials-container {
+/* Container for the groups */
+.testimonials-slider {
   display: flex;
   justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
+  position: relative;
+  height: 350px; /* height to accommodate cards */
 }
 
+/* Each group (3 cards) */
+.testimonials-group {
+  display: flex;
+  gap: 30px;
+  position: absolute; /* same spot */
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 1s ease;
+  animation: fadeGroup 12s infinite;
+}
+
+/* Second group starts after 6s */
+.testimonials-group:nth-child(2) {
+  animation-delay: 6s;
+}
+
+/* Fade in/out keyframes */
+@keyframes fadeGroup {
+  0%, 40% {
+    opacity: 1;
+  }
+  45%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Individual card styling */
 .testimonial-card {
   background-color: #fff;
   border: 1px solid #d1e3ff;
-  border-radius: 10px;
-  width: 250px;
-  padding: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  width: 400px;       /* increased width */
+  min-height: 200px;  /* ensures taller cards */
+  padding: 40px;      /* more padding for content */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .testimonial-card .stars {
   color: #f7c948;
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 10px;
 }
 
 .testimonial-card p {
-  font-size: 14px;
+  font-size: 16px; /* was 15px */
   color: #333;
   margin-bottom: 15px;
 }
 
 .testimonial-card span {
-  font-size: 13px;
+  font-size: 15px; /* was 14px */
   font-style: italic;
   color: #333;
 }
 
-/* Responsive Design */
-@media (max-width: 900px) {
-  .services-section, .testimonials-section {
-    margin: 30px 20px;
-    padding: 30px 20px;
-  }
 
-  .services__card {
-    width: 90%;
-  }
-
-  .testimonials-container {
-    flex-direction: column;
-    align-items: center;
-  }
-}
 
 /* Contact Section */
 .about{
@@ -507,24 +564,27 @@ body {
 }
 
 .btn {
+  display: flex; /* centers text vertically */
+  justify-content: center; /* centers text horizontally */
+  align-items: center; /* ensures perfect vertical centering */
   background-color: white;
   color: #1ea3ff;
   font-weight: 600;
-  padding: 8px 16px; /* reduced horizontal padding */
-  width: 150px; /* fixed smaller width */
+  padding: 14px 40px; /* increased vertical padding for more height */
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
   transition: all 0.3s ease;
   text-decoration: none;
-  text-align: center; /* keeps text centered */
+  text-align: center;
 }
 
 .btn:hover {
   background-color: #e6f3ff;
   transform: translateY(-2px);
 }
+
 
 /* Footer */
 .footer {
@@ -835,14 +895,14 @@ section {
 }
 
 .story-text h2 {
-  font-size: 28px;
-  color: #000;
+  font-size: 32px;
+  color: #00aaff;
   margin-bottom: 15px;
   text-align: left;
 }
 
 .story-text p {
-  font-size: 16px;
+  font-size: 17px;
   color: #333;
   line-height: 1.7;
   margin-bottom: 10px;
@@ -860,18 +920,21 @@ section {
 /* Top image */
 .story-images .img-top {
   width: 400px;
+  height: 300px;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
 
 /* Bottom overlapping image */
 .story-images .img-bottom {
-  width: 250px;
+  width: 300px;
+  height: 200px;
   border-radius: 10px;
   position: absolute;
   bottom: -40px;
   right: -20px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+
 }
 
 /* Responsive layout */
@@ -1131,7 +1194,7 @@ section {
 .team h2{ color: #00aaff; font-size:32px; margin-bottom:12px; }
 .team p{ font-size:16px; line-height:1.7; }
 
-/* === DOCTOR SECTION STYLING === */
+
 /* === DOCTOR SECTION STYLING === */
 .doctor-section {
   background: #fff;
@@ -1161,6 +1224,17 @@ section {
   gap: 20px; /* Reduced gap for better fit */
 }
 
+.doctor-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  gap: 20px;
+  flex-direction: row-reverse; /* 👈 This swaps the image and text */
+}
+
+
 .doctor-text {
   flex: 1 1 55%;
 }
@@ -1174,8 +1248,14 @@ section {
 }
 
 .doctor-text h2 span {
-  color: #0071ce;
+  display: block;            /* puts it on its own line */
+  font-size: 20px;           /* smaller than main heading */
+  color: #1a73e8;              /* softer grey tone */
+  font-weight: 500;          /* lighter than the name */
+  margin-top: 8px;           /* little spacing from the name */
+  letter-spacing: 0.5px;     /* slight spacing for elegance */
 }
+
 
 .doctor-text p {
   font-size: 16px;
@@ -1248,54 +1328,83 @@ section {
   }
 }
 
+/* === TEAM SECTION === */
 .team-section {
   display: flex;
   flex-direction: column;
-  align-items: center;   /* centers all cards horizontally */
-  gap: 30px;             /* spacing between cards */
-  margin: 50px auto;
-  max-width: 1000px;      /* prevents it from stretching too wide */
+  align-items: center;
+  gap: 40px; /* a bit more breathing space between team members */
+  margin: 60px auto;
+  max-width: 1100px; /* match doctor section max width */
+  font-family: 'Segoe UI', sans-serif;
+  padding: 0 20px; /* same side padding as doctor section */
 }
 
 .team-member {
   display: flex;
-  align-items: flex-start;
+  align-items: center; /* vertically align image and text */
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 100%;           /* each card same width */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 1000px; /* keeps it visually aligned with doctor section */
+  gap: 30px; /* spacing between image and text */
 }
 
 .team-member img {
-  width: 300px;
+  width: 280px; /* slightly smaller for balance */
   height: auto;
   border-radius: 10px;
-  margin-right: 20px;
+  flex-shrink: 0; /* prevents image from shrinking */
+  object-fit: cover;
+}
+
+.team-info {
+  flex: 1; /* allows text to fill remaining space */
 }
 
 .team-info h3 {
-  color: #0094ff;
-  margin-bottom: 5px;
+  font-size: 24px;
+  color: #1a73e8;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 
-  /* Responsive */
-  @media (max-width: 600px) {
-    .team-member {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
+.team-info p {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
 
-    .team-member img {
-      width: 200px;
-      height: 200px;
-    }
+.team-info p strong {
+  color: #0078ff;
+  font-weight: 600;
+}
 
-    .member-info {
-      margin-top: 15px;
-    }
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 900px) {
+  .team-member {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
   }
+
+  .team-member img {
+    width: 200px;
+    margin-bottom: 20px;
+  }
+
+  .team-info {
+    text-align: center;
+  }
+
+  .team-info h3 {
+    font-size: 22px;
+  }
+}
+
 
   /* ===== BOOK APPOINTMENT BANNER ===== */
 .appointment-banner {
