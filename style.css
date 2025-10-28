@@ -11,6 +11,47 @@ html, body {
   width: 100%;
 }
 
+/* Top Bar */
+.top-bar {
+  background-color: #0094ff;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 80px;
+  font-size: 18px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  margin: 0;           /* ✅ remove any default margin */
+  border: none;        /* ✅ ensure no border adds spacing */
+}
+
+/* Navbar (directly under top bar) */
+.navbar {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 80px;
+  position: fixed;
+  top: 54px;           /* ✅ same as the top-bar height — adjust if needed */
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  margin: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* keep or remove for cleaner join */
+}
+
+/* Prevent overlap with content */
+body {
+  margin: 0;
+  padding-top: 120px;  /* adjust based on total header height */
+}
+
+
 /* Top bar */ 
 .top-bar {
    background-color: #0094ff; 

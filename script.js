@@ -6,47 +6,81 @@ document.querySelectorAll('.navbar a').forEach(link => {
   });
 });
 
-// Wait for page load
+// Wait for page load - APPOINTMENT FORM HANDLER (UPDATED)
 document.addEventListener("DOMContentLoaded", () => {
-  // --- 1️⃣ Fade-in scroll animation for About section ---
-  const aboutSection = document.querySelector(".about-section");
+  const form = document.getElementById('appointmentForm'); // <-- Use ID from HTML
+  if (!form) return;
 
+  const successMsg = form.querySelector('.msg.success');
+  const errorMsg   = form.querySelector('.msg.error');
 
-if (aboutSection) {  // ✅ Only run this if .about-section exists
-  const showAboutSection = () => {
-    const sectionTop = aboutSection.getBoundingClientRect().top;
-    const screenHeight = window.innerHeight;
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-    if (sectionTop < screenHeight * 0.85) {
-      aboutSection.classList.add("visible");
+    const formData = {
+      name: form.name.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      service: form.service.value,
+      date: form.date ? form.date.value : '',
+      time: form.time ? form.time.value : '',
+      message: form.message.value
+    };
+
+    console.log('Submitting formData:', formData);
+
+    try {
+      const resp = await fetch('/send-email', {  // <-- Relative URL (works with Express static)
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      const text = await resp.text();
+      console.log('Raw response status:', resp.status);
+      console.log('Raw response body:', text);
+
+      let data;
+      try { data = JSON.parse(text); } catch (err) { data = null; }
+
+      if (resp.ok && data && data.success) {
+        successMsg.textContent = data.message || 'Appointment submitted successfully!';
+        successMsg.style.display = 'block';
+        errorMsg.style.display = 'none';
+        form.reset();
+      } else {
+        const msg = (data && data.message) ? data.message : `Server returned status ${resp.status}`;
+        errorMsg.textContent = 'Server rejected request: ' + msg;
+        errorMsg.style.display = 'block';
+        successMsg.style.display = 'none';
+      }
+    } catch (err) {
+      console.error('Network/fetch error:', err);
+      errorMsg.textContent = 'Network error: could not reach server. Is the backend running?';
+      errorMsg.style.display = 'block';
+      successMsg.style.display = 'none';
     }
-  };
-
-  window.addEventListener("scroll", showAboutSection);
-  showAboutSection();
-}
-
-
-  // --- 2️⃣ "Learn More" button animation and click ---
-  const learnMoreBtn = document.querySelector("#learn-more-btn");
-
-  if (learnMoreBtn) {
-    learnMoreBtn.addEventListener("click", () => {
-      learnMoreBtn.classList.add("clicked");
-      setTimeout(() => {
-        learnMoreBtn.classList.remove("clicked");
-        alert("Redirecting to About Page...");
-        // Example for real use: window.location.href = "about.html";
-      }, 600);
-    });
-  }
+  });
 });
 
+// --- 2 "Learn More" button animation and click ---
+const learnMoreBtn = document.querySelector("#learn-more-btn");
+
+if (learnMoreBtn) {
+  learnMoreBtn.addEventListener("click", () => {
+    learnMoreBtn.classList.add("clicked");
+    setTimeout(() => {
+      learnMoreBtn.classList.remove("clicked");
+      alert("Redirecting to About Page...");
+      // Example for real use: window.location.href = "about.html";
+    }, 600);
+  });
+}
 
 // Wait until the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
 
-  // --- 1️⃣ Scroll animation for testimonials ---
+  // --- 1 Scroll animation for testimonials ---
   const testimonialCards = document.querySelectorAll(".testimonial-card");
 
   const revealOnScroll = () => {
@@ -63,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
   revealOnScroll(); // run once on load
 
 
-  // --- 2️⃣ Button click interactivity ---
+  // --- 2 Button click interactivity ---
   const bookBtn = document.querySelector("#book-btn");
   const contactBtn = document.querySelector("#contact-btn");
 
@@ -83,39 +117,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-// Contact Form Script
-// --- 5️⃣ Contact Form Script ---
-const form = document.querySelector("form");
+// Contact Form Script - UPDATED TO USE BACKEND
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
 
-if (form) {  // ✅ only run this if a form exists
-  const nameInput = form.querySelector('input[placeholder="Full Name"]');
-  const phoneInput = form.querySelector('input[placeholder="Phone Number"]');
-  const emailInput = form.querySelector('input[placeholder="Email Address"]');
-  const messageInput = form.querySelector('textarea[placeholder="Message"]');
+  const successMsg = form.querySelector('.msg.success');
+  const errorMsg   = form.querySelector('.msg.error');
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    successMsg.style.display = 'none';
+    errorMsg.style.display   = 'none';
 
-    if (
-      nameInput.value.trim() === "" ||
-      phoneInput.value.trim() === "" ||
-      emailInput.value.trim() === "" ||
-      messageInput.value.trim() === ""
-    ) {
-      alert("Please fill in all fields before submitting.");
-      return;
+    const formData = {
+      name:    form.name.value,
+      email:   form.email.value,
+      phone:   form.phone.value,
+      message: form.message.value
+    };
+
+    try {
+      const resp = await fetch('/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      const json = await resp.json();
+
+      if (resp.ok && json.success) {
+        successMsg.textContent = json.message;
+        successMsg.style.display = 'block';
+        form.reset();
+      } else {
+        errorMsg.textContent = json.message || 'Failed to send message';
+        errorMsg.style.display = 'block';
+      }
+    } catch (err) {
+      console.error('Contact form error:', err);
+      errorMsg.textContent = 'Network error – is the server running?';
+      errorMsg.style.display = 'block';
     }
-
-    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-    if (!emailPattern.test(emailInput.value)) {
-      alert("Please enter a valid email address.");
-      return;
-    }
-
-    alert(`Thank you, ${nameInput.value}! Your message has been sent successfully.`);
-    form.reset();
   });
-}
+});
 
 // script.js
 
@@ -290,7 +335,6 @@ AOS.init({
   once: true
 });
 
-
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
@@ -318,3 +362,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     alert(`Appointment submitted!\n\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nService: ${data.service}\nDate: ${data.date}\nTime: ${data.time}\nMessage: ${data.message}`);
     this.reset();
   });
+

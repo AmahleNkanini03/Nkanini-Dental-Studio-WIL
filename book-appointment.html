@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Book your dental appointment with Nkanini Dental Studio in Sterkspruit. Schedule oral surgery, cosmetic services, and more." />
-  <meta name="keywords" content="dental appointment, Sterkspruit dentist, Nkanini Dental Studio, book dental services" />
+  <meta name="description" content="Book your dental appointment with Nkanini Dental Studio in Sterkspruit." />
+  <meta name="keywords" content="dental appointment, Sterkspruit dentist, Nkanini Dental Studio" />
   <title>Book Appointment | Nkanini Dental Studio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
@@ -35,6 +35,7 @@
         <li><a href="Contact.html">Contact Us</a></li>
         <li><a href="book-appointment.html" class="active">Book Appointment</a></li>
       </ul>
+    </nav>
   </header>
 
   <!-- Hero Section -->
@@ -70,7 +71,9 @@
   <section class="appointment_section" id="appointment-form" data-aos="fade-up">
     <h2>Schedule Your Visit</h2>
     <p>Fill out the form below to book your appointment. We’ll confirm within 24 hours.</p>
-    <form class="appointment-form">
+
+    <!-- ADDED: id for JS -->
+    <form class="appointment-form" id="appointmentForm">
       <div class="form-grid">
         <div class="form-group">
           <label for="name">Full Name</label>
@@ -114,10 +117,14 @@
         </div>
       </div>
       <button type="submit" class="btn submit-btn">Submit Appointment</button>
+
+      <!-- ADDED: success / error messages -->
+      <div class="msg success" style="display:none; color:green; margin-top:10px;"></div>
+      <div class="msg error"   style="display:none; color:red;   margin-top:10px;"></div>
     </form>
   </section>
 
-   <!-- Footer Section -->
+  <!-- Footer Section -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-about">
