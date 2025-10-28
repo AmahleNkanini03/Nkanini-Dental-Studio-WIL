@@ -27,14 +27,14 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="About Us.html">About Us</a></li>
         <li><a href="Services.html">Services</a></li>
-        <li><a href="Contact.html" class="active">Contact Us</a></li>
-        <li><a href="Appointment.html" class="book-appointment">Book Appointment</a></li>
+        <li><a href="contact.html" class="active">Contact Us</a></li>
+        <li><a href="book-appointment.html" class="book-appointment">Book Appointment</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- Hero Section -->
-   <section class="about">
+  <section class="about">
     <div class="overlay">
       <h2>Contact Us</h2>
       <p>We'd love to hear from you. Get in touch with us for appointments, questions, or<br>any dental concerns you may have.</p>
@@ -42,77 +42,80 @@
   </section>
 
   <!-- Contact Section -->
-<section class="contact-page">
-  <div class="contact-wrapper">
-    <!-- Left Side: Contact Info -->
-    <div class="contact-left">
-      <h2>Get in Touch</h2>
+  <section class="contact-page">
+    <div class="contact-wrapper">
+      <!-- Left Side: Contact Info -->
+      <div class="contact-left">
+        <h2>Get in Touch</h2>
 
-      <div class="contact-item">
-        <p>
-          <img src="images/location.png" alt="Location Icon" class="icon">
-          <strong>Address</strong><br>
-          113 Main Street<br>
-          Sterkspruit<br>
-          9762, Eastern Cape
-        </p>
+        <div class="contact-item">
+          <p>
+            <img src="images/location.png" alt="Location Icon" class="icon">
+            <strong>Address</strong><br>
+            113 Main Street<br>
+            Sterkspruit<br>
+            9762, Eastern Cape
+          </p>
+        </div>
+
+        <div class="contact-item">
+          <p>
+            <img src="images/phone.png" alt="Phone Icon" class="icon">
+            <strong>Phone Number</strong><br>
+            081 324 6936 / 078 606 2612
+          </p>
+        </div>
+
+        <div class="contact-item">
+          <p>
+            <img src="images/email.png" alt="Email Icon" class="icon">
+            <strong>Email Address</strong><br>
+            lwazisandle4@gmail.com
+          </p>
+        </div>
+
+        <div class="contact-item">
+          <p>
+            <img src="images/clock.png" alt="Clock Icon" class="icon">
+            <strong>Working Hours</strong><br>
+            Monday - Friday: 8:00 AM - 5:00 PM<br>
+            Saturday: 8:00 AM - 5:00 PM<br>
+            Sunday: Closed<br>
+            <a href="book-appointment.html" class="emergency">Emergency appointments available</a>
+          </p>
+        </div>
       </div>
 
-      <div class="contact-item">
-        <p>
-          <img src="images/phone.png" alt="Phone Icon" class="icon">
-          <strong>Phone Number</strong><br>
-          081 324 6936 / 078 606 2612
-        </p>
-      </div>
+      <!-- Right Side: Contact Form -->
+      <div class="contact-right">
+        <h2>Send a Message</h2>
+        <form id="contactForm">
+          <input type="text" name="name" placeholder="Full Name" required>
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+          <input type="email" name="email" placeholder="Email Address" required>
+          <textarea name="message" rows="5" placeholder="Message" required></textarea>
+          <input type="submit" value="Submit" class="custom-submit-btn">
 
-      <div class="contact-item">
-        <p>
-          <img src="images/email.png" alt="Email Icon" class="icon">
-          <strong>Email Address</strong><br>
-          lwazisandle4@gmail.com
-        </p>
-      </div>
-
-      <div class="contact-item">
-        <p>
-          <img src="images/clock.png" alt="Clock Icon" class="icon">
-          <strong>Working Hours</strong><br>
-          Monday - Friday: 8:00 AM - 5:00 PM<br>
-          Saturday: 8:00 AM - 5:00 PM<br>
-          Sunday: Closed<br>
-          <a href="Appointment.html" class="emergency">Emergency appointments available</a>
-        </p>
+          <!-- ADDED: Success / Error Messages -->
+          <div class="msg success" style="display:none; color:green; margin-top:10px; font-weight:bold;"></div>
+          <div class="msg error"   style="display:none; color:red;   margin-top:10px; font-weight:bold;"></div>
+        </form>
       </div>
     </div>
 
-    <!-- Right Side: Contact Form -->
-    <div class="contact-right">
-      <h2>Send a Message</h2>
-      <form id="messageForm">
-        <input type="text" placeholder="Full Name" required>
-        <input type="tel" placeholder="Phone Number" required>
-        <input type="email" placeholder="Email Address" required>
-        <textarea rows="5" placeholder="Message" required></textarea>
-        <input type="submit" value="Submit" class="custom-submit-btn">
-      </form>
+    <!-- Map and Social Section -->
+    <div class="map-social">
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11876.710598952232!2d27.368074200650074!3d-30.530510368592235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e8bc5ff7bcaec91%3A0x5aa953b67e143690!2sSterkspruit%20Dentist!5e0!3m2!1sen!2sza!4v1760797468274!5m2!1sen!2sza"
+          width="1300" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Map and Social Section -->
-  <div class="map-social">
-    <div class="map-container">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11876.710598952232!2d27.368074200650074!3d-30.530510368592235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e8bc5ff7bcaec91%3A0x5aa953b67e143690!2sSterkspruit%20Dentist!5e0!3m2!1sen!2sza!4v1760797468274!5m2!1sen!2sza"
-        width="1300" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-    </div>
-  </div>
-</section>
-
- <!-- Footer Section -->
+  <!-- Footer Section -->
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-about">
@@ -126,7 +129,7 @@
           <li><a href="About Us.html">About Us</a></li>
           <li><a href="Services.html">Our Services</a></li>
           <li><a href="Our Team.html">Our Team</a></li>
-          <li><a href="Appointment.html">Book Appointment</a></li>
+          <li><a href="book-appointment.html">Book Appointment</a></li>
         </ul>
       </div>
 
@@ -147,6 +150,6 @@
     </div>
   </footer>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
