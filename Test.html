@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Navbar test</title>
+  <style>
+    /* Basic layout for demo */
+    body { font-family: system-ui, Arial; margin: 0; }
+    .navbar { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 1rem; background: #f7f7f7; position: relative; z-index: 10; }
+    .logo img { height: 40px; display:block; }
+
+    nav ul { display:flex; gap: 1rem; list-style: none; margin: 0; padding: 0; align-items: center; }
+    nav a { text-decoration: none; color: #111; padding: 0.25rem 0.5rem; }
+    nav a.active { color: #fff; background:#1e90ff; border-radius:6px; }
+
+    /* HAMBURGER (hidden on desktop) */
+    .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; width: 30px; height: 24px; justify-content: center; }
+    .hamburger span { display:block; height:3px; background:#111; border-radius:2px; transition: transform .25s, opacity .25s; }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      nav ul { display: none; }                 /* hide menu by default */
+      .hamburger { display:flex; }              /* show hamburger */
+
+      /* make nav drop-down full width under header */
+      .navbar nav { position: absolute; top: 100%; left: 0; right: 0; }
+      .navbar nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        background: #fff;
+        box-shadow: 0 6px 18px rgba(0,0,0,.12);
+        padding: 0.5rem 1rem;
+      }
+
+      /* when nav gets .active, reveal ul */
+      .navbar nav.active ul { display: flex; }
+
+      nav a { display:block; padding: .75rem 0; border-bottom: 1px solid #eee; }
+    }
+
+    /* hamburger animation when active */
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; transform: translateX(-10px); }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px,-6px); }
+
+    /* small visual area under header so menu is visible in demo */
+    main { padding: 2rem; height: 1200px; background: linear-gradient(#fff,#f0f7ff); }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="logo">
+      <!-- replace with your real logo path -->
+      <img src="https://via.placeholder.com/160x40?text=Logo" alt="Logo">
+    </div>
+
+    <div class="hamburger" aria-label="Open menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#" class="book-appointment">Book Appointment</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Resize to mobile width and test the hamburger</h1>
+    <p>Click hamburger to open/close. Click a link to close menu and set active link.</p>
+  </main>
+
+  <script>
+    // Single DOMContentLoaded; no duplicates.
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.querySelector('.hamburger');
+      const nav = document.querySelector('.navbar nav');
+
+      // Debug logs for troubleshooting
+      console.log('DOMContentLoaded — hamburger:', !!hamburger, 'nav:', !!nav);
+
+      if (!hamburger || !nav) {
+        console.error('Hamburger or nav missing in DOM');
+        return;
+      }
+
+      // Toggle menu open/close
+      const toggleMenu = () => {
+        nav.classList.toggle('active');
+        hamburger.classList.toggle('active');
+        console.log('Toggled menu — nav.active:', nav.classList.contains('active'));
+      };
+
+      hamburger.addEventListener('click', toggleMenu);
+
+      // Allow keyboard open (Enter/Space)
+      hamburger.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleMenu();
+        }
+      });
+
+      // Close menu on link click and set active state
+      nav.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', (ev) => {
+          // prevent default for demo; remove in production if you have real pages
+          ev.preventDefault();
+
+          // remove active from all and set clicked
+          nav.querySelectorAll('a').forEach(x => x.classList.remove('active'));
+          a.classList.add('active');
+
+          // close mobile menu
+          nav.classList.remove('active');
+          hamburger.classList.remove('active');
+          console.log('Link clicked — active set to:', a.textContent.trim());
+        });
+      });
+
+      // Optional: close menu if user clicks outside nav (desktop-friendly)
+      document.addEventListener('click', (e) => {
+        const isClickInside = e.target.closest('.navbar');
+        if (!isClickInside && nav.classList.contains('active')) {
+          nav.classList.remove('active');
+          hamburger.classList.remove('active');
+          console.log('Clicked outside — menu closed');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
